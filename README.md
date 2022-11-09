@@ -12,7 +12,7 @@
   (M/n có thể về local chạy cho nhanh, nhưng vẫn phải tuân thủ CSDL và ERD đã tạo)
 - Để run website: tìm file appApplication.java rồi chạy "Run as" **Java Spring Boot**
 - Sau khi chạy xong vào link: http://localhost:8888
-NHỮNG LƯU Ý:
 
+NHỮNG LƯU Ý:
 - **Deadline (09/12) để còn merge và kiểm tra nếu có lỗi xảy ra**
 - **Nếu không làm được thì nói sớm sớm để kịp ứng phó @@**
