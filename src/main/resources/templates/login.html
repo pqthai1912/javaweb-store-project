@@ -9,7 +9,7 @@
 	<!-- Nội dung trong này -->
 	<div class="container my-3 my-sm-5 page-content">
 		<div class="row justify-content-center" id="row-login">
-			<div class="col-sm-10 col-md-11 col-lg-9 col-xl-8">
+			<div class="col-sm-10 col-md-12 col-lg-9 col-xl-10">
 				<div class="card card-login">
 					<div class="card-body">
 						<div class="row">
@@ -18,20 +18,19 @@
 							<div class="col-md-6 col-login">
 								<form th:action="@{/login}" method="post">
 									<div class="form-group text-center mb-2">
-										<h2 class="mb-0">Log In</h2>
-										<em>to your account</em>
+										<h2 class="mb-0 text-success"><b>Đăng nhập</b></h2>
 									</div>
 									<div class="form-group">
 										<div class="input-icon">
 											<i data-feather="user"></i> <input required="required"
-												type="text" class="form-control" placeholder="Username"
+												type="text" class="form-control input-lg" placeholder="Username"
 												name="username" th:classappend="${param.error} ? is-invalid">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-icon">
 											<i data-feather="lock"></i> <input required="required"
-												type="password" class="form-control" placeholder="Password"
+												type="password" class="form-control input-lg" placeholder="Password"
 												name="password" th:classappend="${param.error} ? is-invalid">
 											<div class="invalid-feedback">Incorrect username or
 												password</div>
@@ -44,10 +43,10 @@
 												class="custom-control-label" for="loginRemember">Ghi
 												nhớ đăng nhập</label>
 										</div>
-										<a href="#" class="text-primary small reset">Forgot
+										<a href="#" class="text-warning small reset">Forgot
 											password ?</a>
 									</div>
-									<button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+									<button type="submit" class="btn btn-success btn-block">LOGIN</button>
 								</form>
 							</div>
 							<!-- /Login Form -->
@@ -58,7 +57,7 @@
 							<div class="col-md-6 col-register">
 								<form th:action="@{/new-user}" method="post">
 									<div class="form-group text-center">
-										<h2 class="bold">Register</h2>
+										<h2 class="bold text-success"><b>Đăng ký</b></h2>
 									</div>
 									<div class="form-group">
 										<div class="input-icon">
@@ -88,7 +87,7 @@
 												placeholder="Password" autocomplete="new-password">
 										</div>
 									</div>
-									<button type="submit" class="btn btn-outline-primary btn-block">REGISTER</button>
+									<button type="submit" class="btn btn-success btn-block">REGISTER</button>
 								</form>
 							</div>
 							<!-- /Register Form -->
