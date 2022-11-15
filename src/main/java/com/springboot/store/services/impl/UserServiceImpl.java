@@ -16,6 +16,8 @@ import com.springboot.store.repositories.RoleRepository;
 import com.springboot.store.repositories.UserRepository;
 import com.springboot.store.services.UserService;
 
+import util.SecurityUtility;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -55,7 +57,7 @@ public class UserServiceImpl implements UserService {
 		} else {
 			user = new User();
 			user.setUsername(username);
-			/* user.setPassword(SecurityUtility.passwordEncoder().encode(password)); */
+			user.setPassword(SecurityUtility.passwordEncoder().encode(password)); // mã hóa password
 			user.setEmail(email);
 			Set<UserRole> userRoles = new HashSet<>();
 			for (String rolename : roles) {
@@ -68,7 +70,7 @@ public class UserServiceImpl implements UserService {
 				userRoles.add(new UserRole(user, role));
 			}
 			user.setUserRoles(userRoles);
-			return userRepository.save(user);
+			return userRepository.save(user);//lưu lên db
 		}
 	}
 

@@ -7,20 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//import com.ecommerce.ecom.app.domain.Article;
-//import com.ecommerce.ecom.app.service.ArticleService;
+import com.springboot.store.models.Product;
+import com.springboot.store.services.ProductService;
+
 
 @Controller
 public class HomeController {
 		
-//	@Autowired
-//	private ArticleService articleService;
-//	
+	@Autowired
+	private ProductService  productService;
+	
 	
 	@RequestMapping("/")
 	public String index(Model model) {		
-//		List<Article> articles = articleService.findFirstArticles();
-//		model.addAttribute("articles", articles);
+		List<Product> products = productService.findFirstProducts();
+		model.addAttribute("products", products);
 		return "index";
 	}
 

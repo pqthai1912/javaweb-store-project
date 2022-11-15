@@ -9,16 +9,15 @@
 
 	<!-- Nội dung trong này -->
 	<div class="jumbotron jumbotron-fluid mt-2 "
-		th:style="'background-image: url(/image/background/dongho_bg.jpg);'">
+		th:style="'background-image: url(/image/background/dongho_bg1.jpg);'">
 		<div class="container">
 			<div class="row text-center py-5 text-center">
 				<div
-					class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto">
-					<h2 class=" text-white d-inline-block p-1">Brand New</h2>
-					<h1 class="font-weight-bold text-primary ">High Quality
-						Products</h1>
+					class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto"  style="margin:0;">
+					<h2 class=" text-white d-inline-block p-1">Thương hiệu mới</h2>
+					<h1 class="font-weight-bold text-primary ">Đồng hồ chất lượng cao</h1>
 					<a th:href="@{/store}" class="btn btn-primary rounded-pill"
-						data-addclass-on-xs="btn-sm">SHOP NOW</a>
+						data-addclass-on-xs="btn-sm">Mua ngay thôi</a>
 				</div>
 			</div>
 		</div>
@@ -37,19 +36,19 @@
 	
 	<section class="section py-5 ">
 		<div class="container text-center">
-			<h4 class="font-weight-bold ">Featured products</h4>
+			<h4 class="font-weight-bold ">Sản phẩm với tính năng nổi bật</h4>
 			<div class="featured-items mt-4">
 				<div class="card card-product card-featured"
-					th:each="article : ${articles}">
+					th:each="product : ${products}">
 					<div class="card-body">
-						<a th:href="@{/article-detail?id=}+${article.id}"><img
+						<a th:href="@{/product-detail?id=}+${product.id}"><img
 							class="card-img-top"
-							th:src="${article.picture} ? '/image/article/pictures/'+${article.picture}+'.jpg' : '/image/article/itemexample.jpg'"
+							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
 							alt="Card image cap"></a> <a
-							th:href="@{/article-detail?id=}+${article.id}" class="card-title"
-							th:text="${article.title}"></a>
+							th:href="@{/product-detail?id=}+${product.id}" class="card-title"
+							th:text="${product.title}"></a>
 						<div class="price">
-							<span th:text="'$'+${article.price}"></span>
+							<span th:text="'$'+${product.price}"></span>
 						</div>
 					</div>
 				</div>
@@ -58,19 +57,19 @@
 	</section>
 	<section class="section py-5 ">
 		<div class="container text-center">
-			<h4 class="font-weight-bold ">Top products</h4>
+			<h4 class="font-weight-bold ">Top sản phẩm bán chạy</h4>
 			<div class="featured-items mt-4">
 				<div class="card card-product card-featured"
-					th:each="article : ${articles}">
+					th:each="product : ${products}">
 					<div class="card-body">
-						<a th:href="@{/article-detail?id=}+${article.id}"><img
+						<a th:href="@{/product-detail?id=}+${product.id}"><img
 							class="card-img-top"
-							th:src="${article.picture} ? '/image/article/pictures/'+${article.picture}+'.jpg' : '/image/article/itemexample.jpg'"
+							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
 							alt="Card image cap"></a> <a
-							th:href="@{/article-detail?id=}+${article.id}" class="card-title"
-							th:text="${article.title}"></a>
+							th:href="@{/product-detail?id=}+${product.id}" class="card-title"
+							th:text="${product.title}"></a>
 						<div class="price">
-							<span th:text="'$'+${article.price}"></span>
+							<span th:text="'$'+${product.price}"></span>
 						</div>
 					</div>
 				</div>

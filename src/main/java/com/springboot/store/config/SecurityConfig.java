@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter; //nữa tính sau
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -15,7 +15,6 @@ import com.springboot.store.services.impl.UserSecurityService;
 import util.SecurityUtility;
 
 
-@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
@@ -37,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/new-user",
 			"/login",
 			"/store",
-			"/article-detail", // sửa lại
+			"/product-detail",
 			
 	};
 	
@@ -46,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
-			.antMatchers("/article/**").hasRole("ADMIN")
+			.antMatchers("/product/**").hasRole("ADMIN")
 			.anyRequest().authenticated();
 		
 		http
