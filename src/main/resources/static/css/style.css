@@ -11,21 +11,80 @@ body {
   line-height: 1.5;
   color: #606975;
   text-align: left;
-  background-color: #f1f1f1;
-  background: linear-gradient(0deg, rgba(34,193,195,1) 3%, rgba(253,187,45,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(0deg, rgba(34,193,195,1) 3%, rgba(253,187,45,1) 100%);
   
 }
+
+.product .product-img {
+  position: relative;
+}
+
+.product .product-img .product-label {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.product .product-img .product-label>span {
+  border: 2px solid;
+  padding: 2px 10px;
+  font-size: 11px;
+}
+
+.product .product-img .product-label>span.sale {
+  background-color: #FFF;
+  border-color: #fa5571;
+  color: #fa5571;
+}
+
+.product .product-img .product-label>span.new {
+  background-color: #fa5571;
+  border-color: #fa5571;
+  color: #FFF;
+}
+
+
+.product-widget .product-img>img {
+  width: 80%;
+}
+
+#product-imgs .slick-prev:before {
+  content: "\f106";
+}
+
+#product-imgs .slick-next:before {
+  content: "\f107";
+}
+
 
 a {
 	color: #606975;
 }
+a:hover {
+	color: #00de85;
+}
 .card-body{
-	padding: 3rem;
+	padding: 1.2rem;
 }
 @media (max-width: 768px) { 
   .container {
     max-width:90%;
   }
+}
+.product-old-price {
+  font-size: 80%;
+  font-weight: 400;
+  margin-left: 5px;
+}
+.ShopFilters {
+	padding-left: 8px;;
+	padding-right: 8px;
+}
+#searchStore{
+	margin: 0px;
+	padding: 18px;
 }
 
 .page-content {
@@ -151,8 +210,8 @@ a {
  	border-color: #00de85;
 }
 input{
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	height: 3rem;
 }
 .footer-input {
@@ -355,30 +414,35 @@ input{
 .accordion-sidebar .collapsing {
  box-shadow:none
 }
-
+hr.colorhr {
+  border-top: 1px solid #c0c0c0;
+}
 .card {
  box-shadow: 0 .0625rem .25rem rgba(0,0,0,.075);
  border: 0 solid;
 }
 
 .price {
-	font-weight: 700;
-	color: #e83e8c;	
+	font-weight: 1200;
+	color: #e8275e;	
 }
 
 .card-product {
  text-align:center
 }
-.card-product .card-img-top {
- margin-bottom:1rem
-}
+ /*.card-product .card-img-top {
+margin-bottom:1rem
+}*/
 
 .card-product .card-title {
- font-weight:700;
+ font-weight: 900;
+ font-size: 18px;
  display:block
 }
 .card-product .card-title:not(:hover) {
- color:#606975
+ color:#606975;
+ font-weight: 900;
+ font-size: 18px;
 }
 
 @media (max-width:575.98px) {
