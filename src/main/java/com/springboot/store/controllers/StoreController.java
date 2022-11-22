@@ -44,7 +44,7 @@ public class StoreController {
 		Product product = productService.findProductById(id);
 		model.addAttribute("product", product);
 		model.addAttribute("notEnoughStock", model.asMap().get("notEnoughStock"));
-		model.addAttribute("addArticleSuccess", model.asMap().get("addArticleSuccess"));
+		model.addAttribute("addProductSuccess", model.asMap().get("addProductSuccess"));
 		return "productDetail"; //trả về trang chi tiết sản phẩm
 	}
 	
