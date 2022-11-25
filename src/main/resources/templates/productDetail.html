@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="common/header :: common-header" />
+<head th:replace="common/headerDetailProduct :: common-header" />
 
 
 <body class="d-flex flex-column">
@@ -29,9 +29,9 @@
           <div class="col-md-6">
             <img class="img-fluid" th:src="'/image/product/pictures/'+${product.picture}+'.jpg'">
           </div>
-          <div class="col-md-6 mt-3 mt-md-0">          
-            <h2 class="card-title" th:text="${product.title}"></h2>
-            <div class="d-flex align-items-center">
+          <div class="col-md-6 mt-4 mt-md-0" style="padding: 10px;">          
+            <h2 class="card-title" th:text="${product.title}" style="margin-bottom: 20px;"></h2>
+            <div class="d-flex align-items-center"  style="margin-bottom: 10px;">
               <h2 class="price font-weight-bold mr-3">
                 <span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
               </h2>              
@@ -41,29 +41,24 @@
              -->
              <form th:action="@{/shopping-cart/add-item}" method="post">
               <input hidden="hidden" th:field="*{product.id}">  
-              <div class="form-row">
-                <div class="form-group col-sm-3">
+              <div class="form-row"  style="margin-bottom: 10px;">
+                <div class="form-group col-xs-6 col-md-4">
                   <label class="font-weight-bold d-block">Kích thước</label>
                   <select class="form-control" id="size" th:name="size">
                     <option th:each="size : ${product.sizes}" th:value="${size.getValue()}" th:text="${size.getValue()}"></option>
                   </select>
+                </div>
+                <div class="form-group col-xs-6 col-md-4">
+                  <label class="font-weight-bold" for="quantity">Số lượng</label>
+                  <input class="form-control" id="quantity" th:name="qty" type="number" value="1"/>
                 </div>                               
               </div>
-              <div class="form-row">
-                <div class="form-group col-sm-3">
-                  <label class="font-weight-bold" for="quantity">Số lượng</label>
-                  <select class="form-control" id="quantity" th:name="qty">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>                   
-                  </select>
-                </div>
-                <div class="form-group col-sm-6 offset-sm-3 d-flex align-items-end">
-                  <button type="submit" class="btn btn-primary btn-block rounded-pill atc-demo">Thêm vào giỏ hàng</button>
-                </div>
-              </div>
+              
+              
+                
+                  <button type="submit" class="btn btn-danger btn-lg rounded-pill atc-demo">Thêm vào giỏ hàng</button>
+                
+              
             </form>
             <hr>
             <div class="pt-1 mb-2"><span class="text-medium">Brand:&nbsp;</span><a href="#" th:each="brand : ${product.brands}" th:value="${brand.getName()}" th:text="${brand.getName()} + ' '"></a></div>
@@ -75,9 +70,260 @@
         </div>
       </div>    
     </div>
+    
+    <div class="card" style="margin-top: 15px;">
+      <div class="card-body">
+        <div class="row">
+          <section class="product_description_area">
+          
+				<div class="container">
+						<div class="section-intro pb-60px" style="margin-bottom: 50px;">
+			        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
+			      		</div>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+								 aria-selected="false">Thông số</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+								 aria-selected="false">Reviews</a>
+							</li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+								<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
+									and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
+									Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to</p>
+								<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
+									more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
+									the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
+									more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
+									streamlined plan of cooking that is more efficient for one person creating less</p>
+									
+								
+							</div>
+							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+								<div class="row">
+									<div></div>
+									<p>Bảng thông số sản phẩm đồng hồ. Lưu ý thông số chỉ mang tính chất tham khảo và có thể thay đổi theo thời gian. Chân thành cảm ơn quý khách! </p>
+									<div class="table-responsive" style="width: 200%;">
+										<table class="table">
+											<tbody>
+												<tr>
+													<td class="text-center">
+														<h5>Width</h5>
+													</td>
+													<td class="text-center">
+														<h5>128mm</h5>
+													</td>
+												</tr>
+												<tr>
+													<td class="text-center">
+														<h5>Height</h5>
+													</td>
+													<td class="text-center">
+														<h5>508mm</h5>
+													</td>
+												</tr>
+												
+											</tbody>
+										</table>
+								    </div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+								<div class="row">
+									<div class="col-lg-6">
+										
+										<div class="review_list">
+											<div class="review_item">
+												<div class="media">
+													<div class="d-flex">
+														<img src="image/product/pictures/apple-watch.jpg" alt="" style="width: 70px; height: 70px;">
+													</div>
+													<div class="media-body">
+														<h4>Blake Ruiz</h4>
+													</div>
+												</div>
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+													commodo</p>
+											</div>
+											<div class="review_item">
+												<div class="media">
+													<div class="d-flex">
+														<img src="image/product/pictures/review-1.png" alt="" style="width: 70px; height: 70px;">
+													</div>
+													<div class="media-body">
+														<h4>Blake Ruiz</h4>
+													</div>
+												</div>
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+													commodo</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="review_box">
+											<h4>Add a Review</h4>
+							                <form action="#/" class="form-contact form-review mt-3">
+							                  <div class="form-group">
+							                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+							                  </div>
+							                  <div class="form-group">
+							                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
+							                  </div>
+							                  <div class="form-group">
+							                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+							                  </div>
+							                  <div class="form-group">
+							                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+							                  </div>
+							                  <div class="form-group text-center text-md-right mt-3">
+							                    <button type="submit" class="button button--active button-review">Submit Now</button>
+							                  </div>
+							                </form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		</section>
+		<!--================End Product Description Area =================-->
+
+	
+        </div>
+      </div>    
+    </div>
+    
+    
+    <div class="card" style="margin-top: 15px;">
+      <div class="card-body">
+      	<!--================ Start related Product area =================-->  
+		<section class="related-product-area section-margin--small mt-0">
+			<div class="container">
+				<div class="section-intro pb-50px">
+	        		<h2>Sản phẩm <span class="section-intro__style">liên quan</span></h2>
+	      		</div>
+			<div class="row mt-30">
+		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+		          <div class="single-search-product-wrapper">
+			            <div class="single-search-product d-flex">
+			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+			              <div class="desc">
+			                  <a href="#" class="title">Gray Coffee Cup</a>
+			                  <div class="price">$170.00</div>
+			              </div>
+			            </div>
+			            <div class="single-search-product d-flex">
+			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+			              <div class="desc">
+			                <a href="#" class="title">Gray Coffee Cup</a>
+			                <div class="price">$170.00</div>
+			              </div>
+			            </div>
+			            <div class="single-search-product d-flex">
+			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+			              <div class="desc">
+			                <a href="#" class="title">Gray Coffee Cup</a>
+			                <div class="price">$170.00</div>
+			              </div>
+			            </div>
+		          </div>
+		        </div>
+	
+		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+		          <div class="single-search-product-wrapper">
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                  <a href="#" class="title">Gray Coffee Cup</a>
+		                  <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                <a href="#" class="title">Gray Coffee Cup</a>
+		                <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                <a href="#" class="title">Gray Coffee Cup</a>
+		                <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	
+		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+		          <div class="single-search-product-wrapper">
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                  <a href="#" class="title">Gray Coffee Cup</a>
+		                  <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                <a href="#" class="title">Gray Coffee Cup</a>
+		                <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                <a href="#" class="title">Gray Coffee Cup</a>
+		                <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	
+		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+		          <div class="single-search-product-wrapper">
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                  <a href="#" class="title">Gray Coffee Cup</a>
+		                  <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                <a href="#" class="title">Gray Coffee Cup</a>
+		                <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		            <div class="single-search-product d-flex">
+		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+		              <div class="desc">
+		                <a href="#" class="title">Gray Coffee Cup</a>
+		                <div class="price">$170.00</div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	      </div>
+		</div>
+		</section>
+	
+      </div>
+    </div>
   </div>
 
-  <div th:replace="common/header :: footer"> </div> 
-  <div th:replace="common/header :: body-scripts"> </div>
+  <div th:replace="common/headerDetailProduct :: footer"> </div> 
+  <div th:replace="common/headerDetailProduct :: body-scripts"> </div>
 </body>
 </html>
