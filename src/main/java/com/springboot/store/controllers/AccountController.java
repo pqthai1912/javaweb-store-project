@@ -8,6 +8,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -45,6 +47,46 @@ public class AccountController {
 		model.addAttribute("emailExists", model.asMap().get("emailExists"));
 		return "login"; // pass, register thêm dc
 	}
+	
+	
+	/*
+	@RequestMapping("/login2")
+	public String log2(Model model2) {
+		model2.addAttribute("usernameExists", model2.asMap().get("usernameExists"));
+		model2.addAttribute("emailExists", model2.asMap().get("emailExists"));
+		return "login2"; // pass, register thêm dc
+	}
+	*/
+	@Autowired
+	JavaMailSender javaMailSender;
+	
+	@RequestMapping("/sendEmail")
+	public String ShowForm() {
+		return "sendEmail";
+	}
+	
+	@RequestMapping("/sendnail")
+	public String sendMail(@RequestParam("to")String to, @RequestParam("subject")String subject,
+			@RequestParam("content")String content) {
+		
+		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setTo(to);
+		msg.setSubject(subject);
+		msg.setText(content);
+		javaMailSender.send(msg);
+		return "login";
+	}
+	
+	
+	/*
+	@RequestMapping("/sendEmail")
+	public String sendEmail(Model model2) {
+		model2.addAttribute("usernameExists", model2.asMap().get("usernameExists"));
+		model2.addAttribute("emailExists", model2.asMap().get("emailExists"));
+		return "sendEmail"; // pass, register thêm dc
+	}
+	
+	*/
 	
 	@RequestMapping("/my-profile")
 	public String myProfile(Model model, Authentication authentication) {				
