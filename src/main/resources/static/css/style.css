@@ -26,6 +26,9 @@ body {
   top: 0px;
   right: 0px;
 }
+.label-bottom{
+	margin-bottom: 0px;
+}
 
 .product .product-img .product-label>span {
   border: 2px solid;
