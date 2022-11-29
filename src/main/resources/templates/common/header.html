@@ -50,10 +50,10 @@
            <li class="nav-item">
             <a class="nav-link" th:href="@{/store}"> Products </a>
         <li class="nav-item">         
-         <!--  
+           
             <a class="nav-link" th:href="@{/shopping-cart/cart}">Shopping Cart 
-            <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span></a>
-            -->
+          <!--  <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>
+            --></a>
           </li> 
           <li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/merchant}">Other Business </a>
@@ -79,7 +79,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/article/article-list}"> Admin Portal</a>
+            <a class="nav-link text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/product/product-list}"> Admin Portal</a>
           </li>
         </ul>
       </div>

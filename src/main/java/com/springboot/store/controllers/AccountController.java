@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.store.models.Address;
+import com.springboot.store.models.Order;
 import com.springboot.store.models.User;
+import com.springboot.store.services.OrderService;
 import com.springboot.store.services.UserService;
 import com.springboot.store.services.impl.UserSecurityService;
 
@@ -35,8 +37,8 @@ public class AccountController {
 	@Autowired
 	private UserSecurityService userSecurityService;
 	
-//	@Autowired
-//	private OrderService orderService;
+	@Autowired
+	private OrderService orderService;
 
 	// check đã log hay chưa
 	@RequestMapping("/login")
@@ -45,7 +47,7 @@ public class AccountController {
 		model.addAttribute("emailExists", model.asMap().get("emailExists"));
 		return "login"; // pass, register thêm dc
 	}
-	
+	//Xem hồ sơ
 	@RequestMapping("/my-profile")
 	public String myProfile(Model model, Authentication authentication) {				
 		User user = (User) authentication.getPrincipal();
@@ -100,7 +102,7 @@ public class AccountController {
 		return "redirect:/my-profile";  
 	}
 	
-//		
+	//Cập nhật hồ sơ
 	@RequestMapping(value="/update-user-info", method=RequestMethod.POST)
 	public String updateUserInfo( @ModelAttribute("user") User user,
 								  @RequestParam("newPassword") String newPassword,
@@ -143,22 +145,22 @@ public class AccountController {
 		return "myProfile";
 	}
 	
-//	
-//	@RequestMapping("/my-orders")
-//	public String myOrders(Model model, Authentication authentication) {
-//		User user = (User) authentication.getPrincipal();
-//		model.addAttribute("user", user);
-//		List<Order> orders = orderService.findByUser(user);
-//		model.addAttribute("orders", orders);
-//		return "myOrders";
-//	}
+	//	Danh sách hàng đã đặt
+	@RequestMapping("/my-orders")
+	public String myOrders(Model model, Authentication authentication) {
+		User user = (User) authentication.getPrincipal();
+		model.addAttribute("user", user);
+		List<Order> orders = orderService.findByUser(user);
+		model.addAttribute("orders", orders);
+		return "myOrders";
+	}
 	
-//	
-//	@RequestMapping("/order-detail")
-//	public String orderDetail(@RequestParam("order") Long id, Model model) {
-//		Order order = orderService.findOrderWithDetails(id);
-//		model.addAttribute("order", order);
-//		return "orderDetails";
-//	}
+	//	Chi tiết đơn hàng
+	@RequestMapping("/order-detail")
+	public String orderDetail(@RequestParam("order") Long id, Model model) {
+		Order order = orderService.findOrderWithDetails(id);
+		model.addAttribute("order", order);
+		return "orderDetails";
+	}
 	
 }

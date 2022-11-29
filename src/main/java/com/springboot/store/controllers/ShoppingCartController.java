@@ -32,9 +32,10 @@ public class ShoppingCartController {
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);		
 		model.addAttribute("cartItemList", shoppingCart.getCartItems());
 		model.addAttribute("shoppingCart", shoppingCart);		
-		return "shoppingCart";
+		return "cart";
 	}
 
+	//thêm vào giỏ hàng
 	@RequestMapping("/add-item")
 	public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty") String qty,
 						  @RequestParam("size") String size, RedirectAttributes attributes, Model model, Authentication authentication) {
@@ -49,6 +50,7 @@ public class ShoppingCartController {
 		return "redirect:/product-detail?id="+product.getId();
 	}
 	
+	// cập nhật giỏ hàng
 	@RequestMapping("/update-item")
 	public String updateItemQuantity(@RequestParam("id") Long cartItemId,
 									 @RequestParam("qty") Integer qty, Model model) {		
@@ -59,6 +61,7 @@ public class ShoppingCartController {
 		return "redirect:/shopping-cart/cart";
 	}
 	
+	// xóa sản phẩm khỏi giỏ hàng
 	@RequestMapping("/remove-item")
 	public String removeItem(@RequestParam("id") Long id) {		
 		shoppingCartService.removeCartItem(shoppingCartService.findCartItemById(id));		
