@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return SecurityUtility.passwordEncoder();
 	}
 	
+	// những đường dẫn không cần login
 	private static final String[] PUBLIC_MATCHERS = {
 		
 			"/css/**",
@@ -37,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/login",
 			"/store",
 			"/sendEmail",
-			"/result",
+//			"/result",
 			"/login2",
 			"/product-detail",
 			

@@ -32,6 +32,7 @@ public class ShoppingCartController {
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);		
 		model.addAttribute("cartItemList", shoppingCart.getCartItems());
 		model.addAttribute("shoppingCart", shoppingCart);		
+		model.addAttribute("shoppingCartItemNumber",shoppingCartService.getItemsNumber(user)); // show số lượng trong giỏ hàng
 		return "cart";
 	}
 
