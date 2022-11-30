@@ -62,21 +62,44 @@ public class AccountController {
 	@Autowired
 	JavaMailSender javaMailSender;
 	
-	@RequestMapping("/sendEmail")
+	@GetMapping("/sendEmail")
 	public String ShowForm() {
 		return "sendEmail";
 	}
 	
-	@RequestMapping("/sendnail")
+//	@RequestMapping("/sendnail")
+	@PostMapping("/sendEmail")
 	public String sendMail(@RequestParam("to")String to, @RequestParam("subject")String subject,
 			@RequestParam("content")String content) {
+		try {
+			JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		    mailSender.setHost("smtp.gmail.com");
+		    mailSender.setPort(587);
+		    
+		    mailSender.setUsername("phonglechanh116@gmail.com");
+		    mailSender.setPassword("xoswwauoryshfqfb");
+		    
+		    Properties props = mailSender.getJavaMailProperties();
+		    props.put("mail.transport.protocol", "smtp");
+		    props.put("mail.smtp.auth", "true");
+		    props.put("mail.smtp.starttls.enable", "true");
+		    props.put("mail.debug", "true");
+		    
+			SimpleMailMessage msg = new SimpleMailMessage();
+			msg.setTo(to);
+			msg.setSubject(subject);
+			msg.setText(content);
+			mailSender.send(msg);
+			System.out.print("Send to success");
+			return "sendEmail";
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.print(e.getMessage());
+			return "index";
+		}
 		
-		SimpleMailMessage msg = new SimpleMailMessage();
-		msg.setTo(to);
-		msg.setSubject(subject);
-		msg.setText(content);
-		javaMailSender.send(msg);
-		return "login";
+		
 	}
 	
 	
