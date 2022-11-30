@@ -7,56 +7,70 @@
   <div th:replace="common/header :: navbar"> </div>
 
   <div class="container page-content">       
-    <form th:action="@{/shopping-cart/update-item}" method="post">   
-    <input hidden="hidden" id="newqty" th:name="qty">    
-    <input hidden="hidden" id="newid" th:name="id">     
+    <form th:action="@{/shopping-cart/update-item}" method="post" style="margin-top:20px;">   
+    <input hidden="hidden" id="newqty" th:name="qty">
+    <input hidden="hidden" id="newid" th:name="id">
     <div class="card">
       <div class="card-body">
-         <div class="row border-bottom  pb-2 pt-2" th:each="cartItem : ${cartItemList}">        
-           <div class="col-12 col-md-6">
+      	<div class="table-responsive">
+        	<table class="table">
+            	<thead>
+                	<tr>
+                		<th scope="col" style="width:20%"></th>
+	                    <th scope="col">Sản phẩm</th>
+	                    <th scope="col" style="width:10%"></th>
+	                    <th scope="col">Số lượng</th>
+	                    <th scope="col" style="width:10%"></th>
+	                    <th scope="col">Đơn giá</th>
+                	</tr>
+            	</thead>
+         	</table>
+         </div>
+         <!-- <div class="row border-bottom  pb-2 pt-2" th:each="cartItem : ${cartItemList}">        
+           <div class="col-12 col-md-6 col-sm-6 col-xs-6">
               <div class="row align-items-center">              
-                <div class="col-4">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <a th:href="@{/product-detail?id=}+${cartItem.product.id}"><img class="img-fluid" 
                   th:src="'/image/product/pictures/'+${cartItem.product.picture}+'.jpg'" alt="${cartItem.product.title}"></a>
                 </div>
-                <div class="col-8">
-                  <a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h6 bold d-inline-block" th:text=${cartItem.product.title}></a>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h6 bold d-inline-block font-weight-bold" th:text=${cartItem.product.title}></a>
                   <div><i data-feather="check-circle" class="text-success"></i> In Stock</div>                  
                   <div><small><b>Size</b>: <span th:text="${cartItem.size}"></span></small></div>                  
-                  <small><b>Unit Price</b>: $<span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
+                  <small><b>Giá</b>: <span class="text-danger" th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
                 </div>                
               </div>  
            </div>                 
-           <div class="col-12 col-md-6">
+           <div class="col-12 col-md-6 col-sm-6 col-xs-6">
               <div class="row align-items-center mt-3">           
-                <div class="col-5">
+                <div class="col-5 col-sm-5 col-xs-5">
                   <div class="row ">
-                    <label th:for="${cartItem.id}" class="col-sm-6 col-form-label text-sm-right">Qty</label>
-                    <div class="col-sm-6">
-                      <input th:id="${cartItem.id}" th:disabled="${cartItem.product.stock==0}" 
+                    <label th:for="${cartItem.id}" class="col-md-6 col-sm-1 col-form-label text-sm-right"></label>
+                    <div class="col-md-8 col-sm-10">
+                      <input th:id="${cartItem.id}" th:disabled="${cartItem.product.stock==0}"
                          type="number" min="0" max="${cartItem.product.stock}"
                          class="form-control cartItemQty" th:value="${cartItem.qty}">
                       <button style="display: none;"
                           th:id="'update-item-'+${cartItem.id}" type="submit"
-                          class="btn btn-warning btn-xs">Update</button>                                     
+                          class="btn btn-warning btn-xs">Cập nhật</button>                                     
                     </div>
                   </div>            
                 </div>
-                <div class="col-5 text-right">
-                  <span class="font-weight-bold">$ <span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
+                <div class="col-5 col-sm-5 col-xs-5 text-right">
+                  <span class="font-weight-bold text-danger"><span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
                 </div>
                 <div class="col-2 ">
                   <a th:href="@{/shopping-cart/remove-item?id=}+${cartItem.id}"><i class="mb-1" data-feather="trash-2"></i></a>                              
                 </div>
              </div>   
            </div> 
-         </div>
+         </div>-->
          <div class="text-center mt-3">
-            <div th:if="${#lists.isEmpty(cartItemList)}">The cart is empty! </div>
-            <small class="counter">TOTAL</small>
-            <h3 class="font-weight-bold">$ <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span></h3>
-            <a th:href="@{/store}" class="btn btn-info rounded-pill "><i data-feather="arrow-left"></i> Back to shop</a>            
-            <a th:href="@{/checkout}" class="btn btn-primary rounded-pill">Checkout <i data-feather="arrow-right"></i></a>
+            <div th:if="${#lists.isEmpty(cartItemList)}">Giỏ hàng đang rỗng! </div>
+            <small class="counter">Tổng tiền</small>
+            <h3 class="font-weight-bold text-warning pb-3"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span></h3>
+            <a th:href="@{/store}" class="btn btn-info rounded-pill "><i data-feather="arrow-left"></i> Trở lại mua sắm</a>            
+            <a th:href="@{/checkout}" class="btn btn-primary rounded-pill">Thanh toán <i data-feather="arrow-right"></i></a>
         </div>
       </div>
     </div>

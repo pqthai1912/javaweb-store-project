@@ -6,22 +6,22 @@
   <div th:replace="common/header :: navbar"> </div>
 
   <div class="container page-content">   
-    <form th:action="@{/checkout}" method="post">
+    <form th:action="@{/checkout}" method="post" style="margin-top:20px;">
       <div class="row">      
 
         <!-- Checkout Info -->                         
         <div class="col-lg-8 mb-3" >
           <div th:if="${missingRequiredField}">
             <h5 class="alert alert-warning">There are some required fields missing.</h5>
-          </div>          
+          </div>         
           <div id="accordion">
             <div class="card">
               <div class="card-header bg-white" id="headingOne">
-                <h5 class="mb-0">
+                <h4 class="mb-0">
                   <button class="btn btn-link checkout-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    REVIEW ITEMS <i data-feather="chevron-down" class="mb-1"></i>
+                    CÁC SẢN PHẨM <i data-feather="chevron-down" class="mb-1"></i>
                   </button>
-                </h5>
+                </h4>
               </div>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body border-bottom">                
@@ -32,26 +32,26 @@
                           <a th:href="@{/product-detail?id=}+${cartItem.product.id}"><img class="img-fluid" th:src="'/image/product/pictures/'+${cartItem.product.picture}+'.jpg'" alt="${cartItem.product.title}"></a>
                         </div>
                         <div class="col-8">
-                          <a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h6 bold d-inline-block" th:text=${cartItem.product.title}></a>
+                          	<a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h5 font-weight-bold d-inline-block" th:text=${cartItem.product.title}></a>
                             <div><i data-feather="check-circle" class="text-success"></i> In Stock</div>                  
                             <div><small><b>Size</b>: <span th:text="${cartItem.size}"></span></small></div>                  
-                            <small><b>Unit Price</b>: $<span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
+                            <small><b>Giá</b>: <span class="text-danger" th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
                         </div>
                       </div> 
                     </div>  
                     <div class="col-12 col-md-6 text-right">
-                      <span>x<span th:text="${cartItem.qty}"></span> units: </span>                           
-                      <span class="font-weight-bold text-info">$ <span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
+                      <span style="margin-right: 2rem;">x<span th:text="${cartItem.qty}"></span></span>                           
+                      <span class="font-weight-bold text-danger"><span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
                     </div>                  
                   </div>                  
-                  <div class="text-center mx-auto">
-                    <small class="counter">TOTAL</small>
-                    <h3 class="font-weight-bold">$ <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span></h3>
+                  <div class="text-center mx-auto mt-3">
+                    <small class="counter">Tổng tiền</small>
+                    <h3 class="font-weight-bold text-warning mt-1"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span></h3>
                   </div>                    
                   <div class="d-flex flex-wrap justify-content-between align-items-center mt-3">      
-                    <a th:href="@{/shopping-cart/cart}" class="btn btn-info rounded-pill  "><i data-feather="arrow-left"></i> Edit cart</a>           
+                    <a th:href="@{/shopping-cart/cart}" class="btn btn-info rounded-pill  "><i data-feather="arrow-left"></i>Chỉnh sửa giỏ hàng</a>           
                     <a data-toggle="collapse" data-parent="#accordion"
-                        class="btn btn-primary rounded-pill " href="#collapseTwo">Next <i data-feather="arrow-right"></i></a>
+                        class="btn btn-primary rounded-pill " href="#collapseTwo">Bước tiếp theo <i data-feather="arrow-right"></i></a>
                   </div>
                 </div>                 
               </div>
@@ -60,7 +60,7 @@
               <div class="card-header bg-white" id="headingTwo">
                 <h5 class="mb-0">
                   <button class="btn btn-link checkout-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    SHIPPING <i data-feather="chevron-down" class="mb-1"></i>
+                    ĐỊA CHỈ DƠN HÀNG <i data-feather="chevron-down" class="mb-1"></i>
                   </button>
                 </h5>
               </div>    
@@ -68,32 +68,32 @@
                 <div class="card-body border-bottom">
                   <div class="form-row">
                     <div class="form-group col-12">
-                      <label for="receiver">Receiver Name</label> 
+                      <label for="receiver">Tên người nhận </label> 
                       <input type="text" class="form-control" id="receiver" name="receiver" required="required"/>
-                    </div>  
+                    </div> 
                     <div class="form-group col-12">
-                      <label for="streetAddress">Address</label> 
+                      <label for="phone">Số điện thoại</label> 
+                      <input type="number" class="form-control" id="phone" name="phone" required="required" />
+                    </div>
+                    <div class="form-group col-12">
+                      <label for="streetAddress">Địa chỉ (Số nhà/ tên đường)</label> 
                       <input type="text" class="form-control" id="streetAddress" name="streetAddress" required="required" />
                     </div>
-                    <div class="form-group col-4">
-                      <label for="city">City</label> <input type="text"
+                    
+                    <div class="form-group col-6">
+                      <label for="district">Quận/ Huyện</label> <input type="text"
+                        class="form-control" id="district" th:name="district"
+                        required="required"/>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="city">Tỉnh</label> <input type="text"
                         class="form-control" id="city" th:name="city"
                         required="required"/>
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="country">Country</label> <input type="text"
-                        class="form-control" id="country" th:name="country"
-                        required="required"/>
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="zipCode">Zipcode</label> <input
-                        type="text" class="form-control" id="zipCode"
-                        th:name="zipCode" required="required" />
-                    </div>                                       
+                    </div>                                      
                   </div>
                   <div class="mt-2 text-right">
                     <a data-toggle="collapse" data-parent="#accordion"
-                      class="btn btn-primary rounded-pill" href="#collapseThree">Next <i data-feather="arrow-right"></i></a>
+                      class="btn btn-primary rounded-pill" href="#collapseThree">Bước tiếp theo <i data-feather="arrow-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@
               <div class="card-header bg-white" id="headingThree">
                 <h5 class="mb-0">
                   <button class="btn btn-link checkout-header collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    PAYMENT  <i data-feather="chevron-down" class="mb-1"></i>
+                    THANH TOÁN  <i data-feather="chevron-down" class="mb-1"></i>
                   </button>
                 </h5>
               </div>
@@ -110,9 +110,9 @@
                 <div class="card-body border-bottom">
                   <div class="row">
                     <div class="col-12">
-                      <img src="/image/creditcard.png" class="img-fluid mb-2" /><br />
+                      <img src="/image/creditcard.png" class="img-fluid mb-2" style="width: 250px; height: 30px;"/><br />
                       <div class="form-group">
-                        <label for="cardType">Select Card Type: </label> <select
+                        <label for="cardType">Chọn loại cart: </label> <select
                           class="form-control" id="cardType" name="type">
                           <option value="visa">Visa</option>
                           <option value="mastercard">Mastercard</option>
@@ -122,7 +122,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="cardHolder">Card Holder Name:</label> <input
+                        <label for="cardHolder">Card Name:</label> <input
                           type="text" class="form-control" id="cardHolder"
                           required="required" th:name="holderName">
                       </div>
@@ -180,7 +180,7 @@
                     <div class="col-5">
                       <div class="form-group">
                         <label for="cardCVC">CV Code</label> <input id="cardCVC"
-                          type="tel" class="form-control" name="cvc"/>
+                          type="tel" class="form-control" name="cvc" style="margin-top:0"/>
                       </div>
                     </div>
                   </div>  
@@ -198,29 +198,29 @@
         <!-- Summary Panel -->
         <div class="col-lg-4">
           <div class="card">
-            <div class="card-header bg-white checkout-header">ORDER SUMMARY</div>
+            <div class="card-header bg-white checkout-header">ĐƠN HÀNG</div>
             <div class="card-body">
               <div class="d-flex justify-content-between">
-                <span>Cart subtotal</span>
-                <span>$ <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
+                <span>Tổng tiền đơn hàng</span>
+                <span> <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
               </div>
               <div class="d-flex justify-content-between">
-                <span>Shipping</span>
-                <span>$0.00</span>
+                <span>Phí vận chuyển</span>
+                <span>0</span>
               </div>
               <hr>
               <div class="d-flex justify-content-between">
-                <span>Total</span>
-                <span class="font-weight-bold">$ <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
+                <span>Tổng cộng</span>
+                <span class="font-weight-bold text-warning"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
               </div>
             </div>
             <div class="card-footer bg-white border-top-0">
-              <button type="submit" class="btn btn-primary rounded-pill btn-lg btn-block mt-2 mb-3">
-              Place your order
+              <button type="submit" class="btn btn-success rounded-pill btn-lg btn-block mt-2 mb-3">
+              Đặt hàng
               </button>            
               <p style="font-size: smaller;">
-                By placing your order, you agree to Shoepp <a href="#">privacy</a>
-                notice and <a href="#">conditions</a>.</p>                   
+               Khi nhấn Đặt hàng, bạn đã đồng ý với các <a href="#" class="text-info">chính sách</a>
+                và <a href="#" class="text-info">điều khoản</a> của cửa hàng.</p>                   
             </div>
           </div>       
         </div>        
