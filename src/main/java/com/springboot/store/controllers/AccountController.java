@@ -4,22 +4,16 @@ package com.springboot.store.controllers;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,68 +48,6 @@ public class AccountController {
 		return "login"; // pass, register thêm dc
 	}
 
-	
-	/*
-	@RequestMapping("/login2")
-	public String log2(Model model2) {
-		model2.addAttribute("usernameExists", model2.asMap().get("usernameExists"));
-		model2.addAttribute("emailExists", model2.asMap().get("emailExists"));
-		return "login2"; // pass, register thêm dc
-	}
-	*/
-	@Autowired
-	JavaMailSender javaMailSender;
-	
-	@GetMapping("/sendEmail")
-	public String ShowForm() {
-		return "sendEmail";
-	}
-	
-//	@RequestMapping("/sendnail")
-	@PostMapping("/sendEmail")
-	public String sendMail(@RequestParam("to")String to, @RequestParam("subject")String subject,
-			@RequestParam("content")String content) {
-		try {
-			JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		    mailSender.setHost("smtp.gmail.com");
-		    mailSender.setPort(587);
-		    
-		    mailSender.setUsername("phonglechanh116@gmail.com");
-		    mailSender.setPassword("xoswwauoryshfqfb");
-		    
-		    Properties props = mailSender.getJavaMailProperties();
-		    props.put("mail.transport.protocol", "smtp");
-		    props.put("mail.smtp.auth", "true");
-		    props.put("mail.smtp.starttls.enable", "true");
-		    props.put("mail.debug", "true");
-		    
-			SimpleMailMessage msg = new SimpleMailMessage();
-			msg.setTo(to);
-			msg.setSubject(subject);
-			msg.setText(content);
-			mailSender.send(msg);
-			System.out.print("Send to success");
-			return "sendEmail";
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.print(e.getMessage());
-			return "index";
-		}
-		
-		
-	}
-	
-	
-	/*
-	@RequestMapping("/sendEmail")
-	public String sendEmail(Model model2) {
-		model2.addAttribute("usernameExists", model2.asMap().get("usernameExists"));
-		model2.addAttribute("emailExists", model2.asMap().get("emailExists"));
-		return "sendEmail"; // pass, register thêm dc
-	}
-	
-	*/
 	
 
 	//Xem hồ sơ
