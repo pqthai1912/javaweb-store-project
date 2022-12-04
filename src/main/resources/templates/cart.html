@@ -45,7 +45,7 @@
               <div class="row align-items-center mt-3">           
                 <div class="col-5 col-sm-5 col-xs-5">
                   <div class="row ">
-                    <label th:for="${cartItem.id}" class="col-md-6 col-sm-1 col-form-label text-sm-right"></label>
+                    <label th:for="${cartItem.id}" class="col-md-6 col-sm-1 col-form-label text-sm-right">Qty</label>
                     <div class="col-md-8 col-sm-10">
                       <input th:id="${cartItem.id}" th:disabled="${cartItem.product.stock==0}"
                          type="number" min="0" max="${cartItem.product.stock}"

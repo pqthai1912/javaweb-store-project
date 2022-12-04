@@ -56,8 +56,8 @@
               
               
                 
-                  <button type="submit" class="btn btn-danger btn-lg rounded-pill atc-demo">Thêm vào giỏ hàng</button>
-                
+              	<a type="submit" class="btn btn-danger btn-lg rounded-pill atc-demo" sec:authorize="isAnonymous()" th:href="@{/login}" >Thêm vào giỏ hàng</a>
+                <button type="submit" class="btn btn-danger btn-lg rounded-pill atc-demo" sec:authorize="isAuthenticated()">Thêm vào giỏ hàng</button>
               
             </form>
             <hr>
