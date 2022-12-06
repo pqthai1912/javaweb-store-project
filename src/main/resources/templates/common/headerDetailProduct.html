@@ -55,9 +55,10 @@
            <li class="nav-item">
             <a class="nav-link" th:href="@{/store}"> Products </a>
         <li class="nav-item">         
-         <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/shopping-cart/cart}">Shopping Cart 
-          <!-- <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} !=  NULL ? ${shoppingCartItemNumber} : ''"></span>  --> 
-            </a>
+       		<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/shopping-cart/cart}">Shopping Cart 
+				<span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>
+	          	<!-- <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} !=  NULL ? ${shoppingCartItemNumber} : ''"></span>  --> 
+         	</a>
           </li> 
           <li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/merchant}">Other Business </a>

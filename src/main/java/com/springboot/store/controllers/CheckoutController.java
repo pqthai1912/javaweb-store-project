@@ -22,7 +22,7 @@ import com.springboot.store.services.ShoppingCartService;
 
 
 @Controller
-public class CheckoutControler {
+public class CheckoutController {
 	
 	@Autowired 
 	private ShoppingCartService shoppingCartService;
@@ -58,7 +58,7 @@ public class CheckoutControler {
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);	
 		if (!shoppingCart.isEmpty()) {
 			shipping.setAddress(address);
-			Order order = orderService.createOrder(shoppingCart, shipping, payment, user);		
+			Order order = orderService.createOrder(shoppingCart, shipping, payment, user); // thêm đơn đặt hàng vào csdl
 			redirectAttributes.addFlashAttribute("order", order);
 		}
 		return "redirect:/order-submitted";
