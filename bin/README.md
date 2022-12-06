@@ -16,3 +16,6 @@
 NHỮNG LƯU Ý:
 - **Deadline (09/12) để còn merge và kiểm tra nếu có lỗi xảy ra**
 - **Nếu không làm được thì nói sớm sớm để kịp ứng phó @@**
+
+- Mọi người tải cái file SQL mà Công Hậu thêm lên git về máy của mình để có dữ liệu chi tiết nha.
+- Cảm ơn.

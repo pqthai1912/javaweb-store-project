@@ -70,9 +70,7 @@ public class SendMailController {
 			return "redirect:/sendEmail";
 			
 		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.print(e.getMessage());
-			return "index";
+			return "sendMail";
 		}
 		
 		
