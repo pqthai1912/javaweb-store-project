@@ -42,13 +42,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto font-weight-bold">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/}">Home</a>
+            <a class="nav-link" th:href="@{/dashboard}">Home</a>
           </li>
           <!--<li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/}">Back to Home</a>
           </li>-->
            <li class="nav-item">
-            	<a class="nav-link" th:href="@{/order-list}">Danh sách đặt hàng</a>
+            	<a class="nav-link" th:href="@{/product/order-list}">Danh sách đặt hàng</a>
            </li>
         <!--<li class="nav-item">         
            
@@ -58,10 +58,10 @@
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/product-list}">Xem danh sách sản phẩm </a>
+            <a class="nav-link" th:href="@{/product/product-list}">Xem danh sách sản phẩm </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/add-product}"> Thêm sản phẩm mới </a>
+            <a class="nav-link" th:href="@{/product/add-product}"> Thêm sản phẩm mới </a>
           </li>      
                                  
         </ul>
@@ -70,9 +70,9 @@
             <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out </a>
           </li>
           
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/product/product-list}"> Admin Portal</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.springboot.store.models.Product;
+import com.springboot.store.models.User;
 
 public interface ProductService {
 	List<Product> findAllProducts();
@@ -18,6 +19,8 @@ public interface ProductService {
 	Product findProductById(Long id);
 	
 	Product saveProduct(Product product);
+	
+	Product createProduct(String productName, Integer price, Integer amount);
 
 	void deleteProductById(Long id);
 	

@@ -10,23 +10,26 @@
 			<div class="col-sm-12">
 
 				<h2 class="myclass">Thêm sản phẩm mới</h2>
-				<form th:action="@{/}" method="post"
-					enctype="multipart/form-data">
+				<form th:action="@{/product/add-product}" method="post" onsubmit="confirmSubmit()"
+					enctype="multipart/form-data" >
 					<div class="form-group">
-						<label>Tên sản phẩm</label> <input type="text" class="form-control" name="productName" placeholder="Tên sản phẩm" id="productName">
+						<label>Tên sản phẩm</label> 
+						<input type="text" required="required" class="form-control" name="productName" placeholder="Tên sản phẩm" id="productName">
 					</div>
 					<div class="form-group">
-						<label>Giá sản phẩm</label> <input type="number" class="form-control" name="productPrice" placeholder="Giá sản phẩm" id="productPrice">
+						<label>Giá sản phẩm</label> 
+						<input type="number" required="required" class="form-control" name="productPrice" placeholder="Giá sản phẩm" id="productPrice">
 					</div>
 					<div class="form-group">
-						<label>Số lượng sản phẩm thêm vào kho</label> <input type="number" class="form-control" name="productStock" placeholder="Số lượng" id="productStock">
+						<label>Số lượng sản phẩm thêm vào kho</label> 
+						<input type="number" required="required" class="form-control" name="productStock" placeholder="Số lượng" id="productStock">
 					</div>
 					<div class="form-group">
 						<label>Ảnh sản phẩm</label> <br>
 						<input type="file" name="photo" placeholder="Enter photo" id="photo">
 					</div>				
 					<button type="submit" class="btn btn-primary">Save</button>
-					<button type="reset" class="btn btn-primary">Cancel</button>
+					<button type="reset" class="btn btn-primary">Reset</button>
 				</form>
 			</div>
 		</div>
@@ -34,6 +37,16 @@
   
   <div th:replace="common/header :: footer"> </div>
   <div th:replace="common/header :: body-scripts"> </div>
+  
+  <script>
+  		function confirmSubmit(){	  
+			var confirm = window.confirm('Bạn đã chắc chắn muốn thêm sản phẩm này?');
+			if(!confirm){
+				return false; //Doesn't work :'(
+			}
+		}
+  		
+  </script>
   
 </body>
 </html>

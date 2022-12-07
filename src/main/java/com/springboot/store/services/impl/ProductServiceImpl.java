@@ -1,7 +1,9 @@
 package com.springboot.store.services.impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,9 +16,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springboot.store.models.Product;
+import com.springboot.store.models.User;
+import com.springboot.store.other.Role;
+import com.springboot.store.other.UserRole;
 import com.springboot.store.repositories.ProductRepository;
 import com.springboot.store.repositories.ProductSpecification;
 import com.springboot.store.services.ProductService;
+
+import util.SecurityUtility;
 
 @Service
 @Transactional
@@ -80,5 +87,15 @@ public class ProductServiceImpl implements ProductService {
 	@Cacheable("brands")
 	public List<String> getAllBrands() {
 		return productRepository.findAllBrands();
+	}
+
+	@Override
+	public Product createProduct(String productName, Integer price, Integer amount) {
+		Product product = new Product();
+		product.setTitle(productName);
+		product.setPrice(price); 
+		product.setStock(amount);
+
+		return productRepository.save(product);//lưu lên db
 	}
 }
