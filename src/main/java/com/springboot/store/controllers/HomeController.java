@@ -22,6 +22,7 @@ public class HomeController {
 	public String index(Model model) {		
 		List<Product> products = productService.findFirstProducts();
 		model.addAttribute("products", products);
+//		return "indexAdmin"; Tạm thời, để dễ dàng kiểm tra pages cho admin
 		return "index";
 	}
 
