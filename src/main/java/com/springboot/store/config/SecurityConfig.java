@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.springboot.store.handler.LoginSuccessHandler;
 import com.springboot.store.services.impl.UserSecurityService;
 
 import util.SecurityUtility;
@@ -52,12 +53,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.antMatchers("/product/**").hasRole("ADMIN")
+			.antMatchers("/dashboard/**").hasRole("ADMIN") // ngan k cho client vao
 			.anyRequest().authenticated();
 		
 		http
 			.csrf().disable().cors().disable()
 			.formLogin().failureUrl("/login?error")
-			.loginPage("/login").permitAll()
+			.loginPage("/login")
+			.successHandler(loginSuccessHandler) // them dong nay xu ly redirect cho login thanh cong
+			.permitAll()
 //			.and().csrf().disable().cors().disable() 
 //			.formLogin().failureUrl("/result?error")
 //			.loginPage("/result").permitAll()
@@ -83,5 +87,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
 	}
 	
+	@Autowired private LoginSuccessHandler loginSuccessHandler;
 }
 

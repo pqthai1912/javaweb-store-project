@@ -25,6 +25,13 @@ public class HomeController {
 //		return "indexAdmin"; Tạm thời, để dễ dàng kiểm tra pages cho admin
 		return "index";
 	}
+	
+	@RequestMapping("/dashboard")
+	public String dashboard(Model model) {		
+		List<Product> products = productService.findFirstProducts();
+		model.addAttribute("products", products);
+		return "indexAdmin";
+	}
 
 	
 }
