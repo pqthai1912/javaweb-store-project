@@ -17,6 +17,10 @@ body {
   
 }
 
+.navbar-color:hover {
+	color:#ff80c0;
+}
+
 .product .product-img {
   position: relative;
 }
