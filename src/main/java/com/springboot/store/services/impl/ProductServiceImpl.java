@@ -1,9 +1,7 @@
 package com.springboot.store.services.impl;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,14 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springboot.store.models.Product;
-import com.springboot.store.models.User;
-import com.springboot.store.other.Role;
-import com.springboot.store.other.UserRole;
 import com.springboot.store.repositories.ProductRepository;
 import com.springboot.store.repositories.ProductSpecification;
 import com.springboot.store.services.ProductService;
 
-import util.SecurityUtility;
 
 @Service
 @Transactional
@@ -50,6 +44,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> findFirstProducts() {
 		return productRepository.findAll(PageRequest.of(0,featuredProductsNumber)).getContent(); 
+	}
+	
+	@Override
+	public List<Product> findProductsByCategory(String name){
+		return productRepository.findAllByCategories(name);
 	}
 
 	@Override

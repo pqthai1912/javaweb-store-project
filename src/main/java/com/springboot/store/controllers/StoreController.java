@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springboot.store.models.Category;
 import com.springboot.store.models.Product;
 import com.springboot.store.filters.ProductFilterForm;
 import com.springboot.store.services.ProductService;
@@ -45,6 +46,14 @@ public class StoreController {
 		model.addAttribute("product", product);
 		model.addAttribute("notEnoughStock", model.asMap().get("notEnoughStock"));
 		model.addAttribute("addProductSuccess", model.asMap().get("addProductSuccess"));
+		
+		String name = null;
+		for(Category category : product.getCategories()) {
+			name = category.getName();
+			break; // lấy 1 thể loại
+		}
+		model.addAttribute("productsByCategory", productService.findProductsByCategory(name)); // get by category for product
+		
 		return "productDetail"; //trả về trang chi tiết sản phẩm
 	}
 	

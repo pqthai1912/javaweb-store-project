@@ -70,7 +70,7 @@
         </div>
       </div>    
     </div>
-    
+    <!--
     <div class="card" style="margin-top: 15px;">
       <div class="card-body">
         <div class="row">
@@ -88,10 +88,6 @@
 								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
 								 aria-selected="false">Thông số</a>
 							</li>
-							<!--  <li class="nav-item">
-								<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-								 aria-selected="false">Reviews</a>
-							</li>-->
 						</ul>
 						<div class="tab-content" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -195,14 +191,11 @@
 						</div>
 					</div>
 		</section>
-		<!--================End Product Description Area =================-->
-
-	
+		================End Product Description Area =================
         </div>
       </div>    
     </div>
-    
-    
+    -->
     <div class="card" style="margin-top: 15px;">
       <div class="card-body">
       	<!--================ Start related Product area =================-->  
@@ -211,112 +204,57 @@
 				<div class="section-intro pb-50px">
 	        		<h2>Sản phẩm <span class="section-intro__style">liên quan</span></h2>
 	      		</div>
-			<div class="row mt-30">
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-			            <div class="single-search-product d-flex">
-			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-			              <div class="desc">
-			                  <a href="#" class="title">Gray Coffee Cup</a>
-			                  <div class="price">$170.00</div>
-			              </div>
-			            </div>
-			            <div class="single-search-product d-flex">
-			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-			              <div class="desc">
-			                <a href="#" class="title">Gray Coffee Cup</a>
-			                <div class="price">$170.00</div>
-			              </div>
-			            </div>
-			            <div class="single-search-product d-flex">
-			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-			              <div class="desc">
-			                <a href="#" class="title">Gray Coffee Cup</a>
-			                <div class="price">$170.00</div>
-			              </div>
-			            </div>
-		          </div>
-		        </div>
-	
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                  <a href="#" class="title">Gray Coffee Cup</a>
-		                  <div class="price">$170.00</div>
+	      		<!--
+				<div class="row mt-30">
+			        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
+			          <div class="single-search-product-wrapper">
+				            <div class="single-search-product d-flex">
+				              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+				              <div class="desc">
+				                  <a href="#" class="title">Gray Coffee Cup</a>
+				                  <div class="price">$170.00</div>
+				              </div>
+				            </div>
+				            <div class="single-search-product d-flex">
+				              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+				              <div class="desc">
+				                <a href="#" class="title">Gray Coffee Cup</a>
+				                <div class="price">$170.00</div>
+				              </div>
+				            </div>
+				            <div class="single-search-product d-flex">
+				              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
+				              <div class="desc">
+				                <a href="#" class="title">Gray Coffee Cup</a>
+				                <div class="price">$170.00</div>
+				              </div>
+				            </div>
+			          </div>
+			        </div>
+		      	</div>-->  
+		      	
+		      	<!-- Shop Grid -->          
+		          <div class="grid grid-gap-3 grid-col-2 grid-col-lg-4 mb-4">
+		              <div class="card card-product" th:each="prod,iter: ${productsByCategory}">
+		                <div class="card-body" th:if="${iter.index < 6}">
+		                	<div class="product">
+			                	<div class="product-img">
+									<a th:href="@{../product-detail?id=}+${prod.id}"><img class="card-img-top" th:src="${prod.picture} ? '/image/product/pictures/'+${prod.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>
+									<div class="product-label">
+										<span class="sale">-30%</span>
+										<span class="new">NEW</span>
+									</div>
+								</div>
+							</div>
+		                  <a th:href="@{../product-detail?id=}+${prod.id}" class="card-title" th:text="${prod.title}" style="text-decoration: none;" ></a>
+		                  <hr class="colorhr">
+		                  <div class="price">
+		                  <span class="h5" th:text="${#numbers.formatDecimal(prod.price, 0, T(Math).round(prod.price) == prod.price ? 0 : 2)} + 'VNĐ'"> </span>
+		               	 </div>
+		                </div>              
 		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                  <a href="#" class="title">Gray Coffee Cup</a>
-		                  <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                  <a href="#" class="title">Gray Coffee Cup</a>
-		                  <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	      </div>
-		</div>
+		          </div> 
+			</div>
 		</section>
 	
       </div>
