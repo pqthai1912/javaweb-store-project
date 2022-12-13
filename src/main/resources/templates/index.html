@@ -89,24 +89,26 @@
 	
 	
 	<section class="section py-5 ">
+		<h4 class="font-weight-bold text-warning text-center">Gợi ý hôm nay</h4>
 		<div class="container text-center">
-			<h4 class="font-weight-bold text-warning">Gợi ý hôm nay</h4>
-			<div class="featured-items mt-4">
-				<div class="card card-product card-featured"
-					th:each="product : ${products}">
-					<div class="card-body">
-						<a th:href="@{/product-detail?id=}+${product.id}"><img
-							class="card-img-top"
-							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
-							alt="Card image cap"></a> <a
-							th:href="@{/product-detail?id=}+${product.id}" class="card-title"
-							th:text="${product.title}"></a>
-						<div class="price">
-							<span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
+			<div th:each="product,iter: ${products}">
+				<div class="featured-items mt-4" th:if="${(iter.index % 2) == numberShowProducts}">
+					<div class="card card-product card-featured">
+						<div class="card-body">
+							<a th:href="@{/product-detail?id=}+${product.id}"><img
+								class="card-img-top"
+								th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
+								alt="Card image cap"></a> <a
+								th:href="@{/product-detail?id=}+${product.id}" class="card-title"
+								th:text="${product.title}"></a>
+							<div class="price">
+								<span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</section>
 	

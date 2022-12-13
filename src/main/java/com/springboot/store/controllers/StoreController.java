@@ -52,7 +52,7 @@ public class StoreController {
 			name = category.getName();
 			break; // lấy 1 thể loại
 		}
-		model.addAttribute("productsByCategory", productService.findProductsByCategory(name)); // get by category for product
+		model.addAttribute("productsByCategory", productService.findProductsByCategory(name, product.getId())); // get by category for product
 		
 		return "productDetail"; //trả về trang chi tiết sản phẩm
 	}

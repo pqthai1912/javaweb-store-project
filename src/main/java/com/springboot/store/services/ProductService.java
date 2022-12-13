@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.springboot.store.models.Product;
-import com.springboot.store.models.User;
 
 public interface ProductService {
 	List<Product> findAllProducts();
@@ -16,7 +15,7 @@ public interface ProductService {
 		
 	List<Product> findFirstProducts();
 	
-	List<Product> findProductsByCategory(String name);
+	List<Product> findProductsByCategory(String name, Long id);
 
 	Product findProductById(Long id);
 	
