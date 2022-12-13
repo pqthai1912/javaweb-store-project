@@ -28,4 +28,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 	@Query("SELECT DISTINCT b.name FROM Brand b")
 	List<String> findAllBrands();
 	
+	@Query("SELECT DISTINCT p FROM Category c, Product p WHERE c.name = ?1")
+	List<Product> findAllByCategories(String name);
+	
 }
