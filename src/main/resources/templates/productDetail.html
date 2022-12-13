@@ -239,14 +239,14 @@
 		                <div class="card-body" th:if="${iter.index < 6}">
 		                	<div class="product">
 			                	<div class="product-img">
-									<a th:href="@{../prod-detail?id=}+${prod.id}"><img class="card-img-top" th:src="${prod.picture} ? '/image/product/pictures/'+${prod.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>
+									<a th:href="@{../product-detail?id=}+${prod.id}"><img class="card-img-top" th:src="${prod.picture} ? '/image/product/pictures/'+${prod.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>
 									<div class="product-label">
 										<span class="sale">-30%</span>
 										<span class="new">NEW</span>
 									</div>
 								</div>
 							</div>
-		                  <a th:href="@{../prod-detail?id=}+${prod.id}" class="card-title" th:text="${prod.title}" style="text-decoration: none;" ></a>
+		                  <a th:href="@{../product-detail?id=}+${prod.id}" class="card-title" th:text="${prod.title}" style="text-decoration: none;" ></a>
 		                  <hr class="colorhr">
 		                  <div class="price">
 		                  <span class="h5" th:text="${#numbers.formatDecimal(prod.price, 0, T(Math).round(prod.price) == prod.price ? 0 : 2)} + 'VNĐ'"> </span>
