@@ -6,5 +6,6 @@ import com.springboot.store.models.Category;
 
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
+	Category findCategoryById(Long id);
+	Category findCategoryByProductId(Long id);
 }

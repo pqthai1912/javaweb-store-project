@@ -9,20 +9,23 @@
 			style="background-image:linear-gradient(90deg, rgba(255,182,0,1) 15%, rgb(80, 77, 41) 110%); border-radius: 10px; width: 50%; margin: 20px auto; padding: 20px;">
 			<div class="col-sm-12">
 
-				<h2 class="myclass">Thêm sản phẩm mới</h2>
-				<form th:action="@{/product/add-product}" method="post" 
+				<h2 class="myclass">Chỉnh sửa thông tin sản phẩm</h2>
+				<form th:action="@{/product/edit-product}" method="post" 
 					enctype="multipart/form-data" > <!--onsubmit="confirmSubmit()"-->
 					<div class="form-group">
+						<input type="hidden" class="form-control" name="id" th:value="${product.id}" id="id">
+					</div>
+					<div class="form-group">
 						<label>Tên sản phẩm</label> 
-						<input type="text" required="required" class="form-control" name="productName" placeholder="Tên sản phẩm" id="productName">
+						<input type="text" required="required" class="form-control" name="productName" th:value="${product.title}" id="productName">
 					</div>
 					<div class="form-group">
 						<label>Giá sản phẩm</label> 
-						<input type="number" required="required" class="form-control" name="productPrice" placeholder="Giá sản phẩm" id="productPrice">
+						<input type="number" required="required" class="form-control" name="productPrice" th:value="${product.price}" id="productPrice">
 					</div>
 					<div class="form-group">
 						<label>Số lượng sản phẩm thêm vào kho</label> 
-						<input type="number" required="required" class="form-control" name="productStock" placeholder="Số lượng" id="productStock">
+						<input type="number" required="required" class="form-control" name="productStock" th:value="${product.stock}" id="productStock">
 					</div>
 					<div class="form-group">
 						<label>Ảnh sản phẩm</label> <br>
@@ -30,22 +33,18 @@
 					</div>				
 					<div class="form-group">
 						<label>Brand</label> 
-						<input type="text" required="required" class="form-control" name="productBrand" placeholder="Brand" id="productBrand">
+						<input type="text" required="required" class="form-control" name="productBrand" th:value="${brand.name}" id="productBrand">
 					</div>
 					<div class="form-group">
 						<label>Category</label> 
-						<input type="text" required="required" class="form-control" name="productCategory" placeholder="Category" id="productCategory">
-					</div>
-					<div class="form-group">
-						<label>Size</label> 
-						<input type="text" required="required" class="form-control" name="productSize" placeholder="Size" id="productSize">
+						<input type="text" required="required" class="form-control" name="productCategory" th:value="${category.name}" id="productCategory">
 					</div>
 					<!-- <div class="form-group">
 						<label>Mô tả sản phẩm</label> 
 						<textarea class="form-control" name="productDesc" placeholder="Mô tả" id="productDesc"></textarea>
 					</div> -->
 					
-					<button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+					<button type="submit" class="btn btn-primary">Lưu</button>
 					<button type="reset" class="btn btn-primary">Reset</button>
 				</form>
 			</div>
