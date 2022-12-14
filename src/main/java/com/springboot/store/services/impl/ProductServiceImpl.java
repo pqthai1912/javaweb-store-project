@@ -58,7 +58,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> findFirstProducts() {
 		return productRepository.findAll(PageRequest.of(0,featuredProductsNumber)).getContent(); 
 	}
-
+	
+	@Override
+	public List<Product> findProductsByCategory(String name, Long id){
+		return productRepository.findAllByCategories(name, id);
+	}
+	
 	@Override
 	public Product findProductById(Long id) {
 		Optional<Product> opt = productRepository.findById(id);

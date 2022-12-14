@@ -19,6 +19,8 @@ public interface ProductService {
 			List<String> categories, List<String> brands, String search);
 		
 	List<Product> findFirstProducts();
+	
+	List<Product> findProductsByCategory(String name, Long id);
 
 	Product findProductById(Long id);
 	
