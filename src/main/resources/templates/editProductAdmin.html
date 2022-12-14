@@ -39,10 +39,10 @@
 						<label>Category</label> 
 						<input type="text" required="required" class="form-control" name="productCategory" th:value="${category.name}" id="productCategory">
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label>Mô tả sản phẩm</label> 
-						<textarea class="form-control" name="productDesc" placeholder="Mô tả" id="productDesc"></textarea>
-					</div> -->
+						<textarea class="form-control" name="productDesc" th:text="${product.description}" id="productDesc"></textarea>
+					</div>
 					
 					<button type="submit" class="btn btn-primary">Lưu</button>
 					<button type="reset" class="btn btn-primary">Reset</button>

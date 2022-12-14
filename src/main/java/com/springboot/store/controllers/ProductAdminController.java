@@ -54,7 +54,7 @@ public class ProductAdminController {
 	@PostMapping("/product/add-product")
 	public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResults,
 			  @ModelAttribute("productName") String productName, @ModelAttribute("productPrice") double productPrice, 
-			  @ModelAttribute("productStock") Integer productStock, @ModelAttribute("productBrand") String productBrand,
+			  @ModelAttribute("productStock") Integer productStock, @ModelAttribute("productDesc") String productDesc, @ModelAttribute("productBrand") String productBrand,
 			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productSize") String productSize,
 			  @ModelAttribute("brand") Brand brand, @ModelAttribute("category") Category category, @ModelAttribute("size") Size size,
 			  RedirectAttributes redirectAttributes, Model model) {
@@ -67,7 +67,7 @@ public class ProductAdminController {
 			return "redirect:/product/add-product";
 		}		
 		
-		product = productService.createProduct(productName, productPrice, productStock, "Bổ sung giúp trường mô tả ở đây");
+		product = productService.createProduct(productName, productPrice, productStock, productDesc);
 		brand = new Brand(productBrand, product);
 		productService.saveBrand(brand);
 		category = new Category(productCategory, product);
@@ -100,7 +100,7 @@ public class ProductAdminController {
 	public String editProduct(
 			  @ModelAttribute("id") Long id, @ModelAttribute("productName") String productName, @ModelAttribute("productPrice") double productPrice, 
 			  @ModelAttribute("productStock") Integer productStock, @ModelAttribute("productBrand") String productBrand,
-			  @ModelAttribute("productCategory") String productCategory, 
+			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productDesc") String productDesc, 
 			  RedirectAttributes redirectAttributes) {
 		
 		boolean invalidFields = false;	
@@ -115,6 +115,7 @@ public class ProductAdminController {
 		product.setTitle(productName);
 		product.setPrice(productPrice);
 		product.setStock(productStock);
+		product.setDescription(productDesc);
 		brand.setName(productBrand);
 		brand.setProduct(product);
 		category.setName(productCategory);

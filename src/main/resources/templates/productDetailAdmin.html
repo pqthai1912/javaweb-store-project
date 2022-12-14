@@ -53,133 +53,22 @@
       </div>    
     </div>
     
+    
+     
     <div class="card" style="margin-top: 15px; margin-bottom: 15px">
       <div class="card-body">
         <div class="row">
           <section class="product_description_area">
           
 				<div class="container">
-						<div class="section-intro pb-60px" style="margin-bottom: 50px;">
-			        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
-			      		</div>
-						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item">
-								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-								 aria-selected="false">Thông số</a>
-							</li>
-							<!--  <li class="nav-item">
-								<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-								 aria-selected="false">Reviews</a>
-							</li>-->
-						</ul>
-						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-								<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-									and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-									Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to</p>
-								<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-									more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-									the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-									more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-									streamlined plan of cooking that is more efficient for one person creating less</p>
-									
-								
-							</div>
-							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-								<div class="row">
-									<div></div>
-									<p>Bảng thông số sản phẩm đồng hồ. Lưu ý thông số chỉ mang tính chất tham khảo và có thể thay đổi theo thời gian. Chân thành cảm ơn quý khách! </p>
-									<div class="table-responsive" style="width: 200%;">
-										<table class="table">
-											<tbody>
-												<tr>
-													<td class="text-center">
-														<h5>Width</h5>
-													</td>
-													<td class="text-center">
-														<h5>128mm</h5>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center">
-														<h5>Height</h5>
-													</td>
-													<td class="text-center">
-														<h5>508mm</h5>
-													</td>
-												</tr>
-												
-											</tbody>
-										</table>
-								    </div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-								<div class="row">
-									<div class="col-lg-6">
-										
-										<div class="review_list">
-											<div class="review_item">
-												<div class="media">
-													<div class="d-flex">
-														<img src="image/product/pictures/apple-watch.jpg" alt="" style="width: 70px; height: 70px;">
-													</div>
-													<div class="media-body">
-														<h4>Blake Ruiz</h4>
-													</div>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-													commodo</p>
-											</div>
-											<div class="review_item">
-												<div class="media">
-													<div class="d-flex">
-														<img src="image/product/pictures/review-1.png" alt="" style="width: 70px; height: 70px;">
-													</div>
-													<div class="media-body">
-														<h4>Blake Ruiz</h4>
-													</div>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-													commodo</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="review_box">
-											<h4>Add a Review</h4>
-							                <form action="#/" class="form-contact form-review mt-3">
-							                  <div class="form-group">
-							                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
-							                  </div>
-							                  <div class="form-group">
-							                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
-							                  </div>
-							                  <div class="form-group">
-							                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
-							                  </div>
-							                  <div class="form-group">
-							                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
-							                  </div>
-							                  <div class="form-group text-center text-md-right mt-3">
-							                    <button type="submit" class="button button--active button-review">Submit Now</button>
-							                  </div>
-							                </form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div class="section-intro pb-60px" style="margin-bottom: 50px;">
+		        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
+		        		
+		      		</div>
+		      		<p th:text="${product.description}"></p>
+				</div>
 		</section>
-		<!--================End Product Description Area =================-->
-
-	
+		<!-- ================End Product Description Area =================-->
         </div>
       </div>    
     </div>
