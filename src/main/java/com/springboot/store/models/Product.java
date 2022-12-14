@@ -20,6 +20,7 @@ public class Product {
 	private int stock;	
 	private double price;
 	private String picture;
+	private String description;
 	
 	@OneToMany(mappedBy="product", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Size> sizes;
@@ -121,5 +122,15 @@ public class Product {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 
 }

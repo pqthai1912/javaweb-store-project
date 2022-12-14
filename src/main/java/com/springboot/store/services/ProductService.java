@@ -26,7 +26,7 @@ public interface ProductService {
 	
 	Product saveProduct(Product product);
 	
-	Product createProduct(String productName, double price, Integer amount);
+	Product createProduct(String productName, double price, Integer amount, String description);
 
 	void deleteProductById(Long id);
 	

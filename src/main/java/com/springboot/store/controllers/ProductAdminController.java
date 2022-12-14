@@ -67,7 +67,7 @@ public class ProductAdminController {
 			return "redirect:/product/add-product";
 		}		
 		
-		product = productService.createProduct(productName, productPrice, productStock);
+		product = productService.createProduct(productName, productPrice, productStock, "Bổ sung giúp trường mô tả ở đây");
 		brand = new Brand(productBrand, product);
 		productService.saveBrand(brand);
 		category = new Category(productCategory, product);

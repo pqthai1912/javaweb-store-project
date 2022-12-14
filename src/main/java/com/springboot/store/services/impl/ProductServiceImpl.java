@@ -102,11 +102,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product createProduct(String productName, double price, Integer amount) {
+	public Product createProduct(String productName, double price, Integer amount, String description) {
 		Product product = new Product();
 		product.setTitle(productName);
 		product.setPrice(price); 
 		product.setStock(amount);
+		product.setDescription(description);
 
 		return productRepository.save(product);//lưu lên db
 	}

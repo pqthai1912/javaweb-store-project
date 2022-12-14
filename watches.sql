@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 06, 2022 lúc 09:57 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 14, 2022 at 01:40 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `watches`
+-- Database: `watches`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
@@ -38,7 +38,7 @@ CREATE TABLE `address` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brand`
+-- Table structure for table `brand`
 --
 
 CREATE TABLE `brand` (
@@ -48,7 +48,7 @@ CREATE TABLE `brand` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `brand`
+-- Dumping data for table `brand`
 --
 
 INSERT INTO `brand` (`id`, `name`, `product_id`) VALUES
@@ -75,7 +75,7 @@ INSERT INTO `brand` (`id`, `name`, `product_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart_item`
+-- Table structure for table `cart_item`
 --
 
 CREATE TABLE `cart_item` (
@@ -88,16 +88,18 @@ CREATE TABLE `cart_item` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `cart_item`
+-- Dumping data for table `cart_item`
 --
 
 INSERT INTO `cart_item` (`id`, `qty`, `size`, `order_id`, `product_id`, `user_id`) VALUES
-(4, 3, '4.5', NULL, 1, 1);
+(4, 3, '4.5', NULL, 1, 1),
+(6, 1, '5', NULL, 20, 2),
+(7, 1, '4.5', NULL, 19, 2);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -107,7 +109,7 @@ CREATE TABLE `category` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `product_id`) VALUES
@@ -120,7 +122,7 @@ INSERT INTO `category` (`id`, `name`, `product_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hibernate_sequence`
+-- Table structure for table `hibernate_sequence`
 --
 
 CREATE TABLE `hibernate_sequence` (
@@ -128,16 +130,17 @@ CREATE TABLE `hibernate_sequence` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `hibernate_sequence`
+-- Dumping data for table `hibernate_sequence`
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(4);
+(3),
+(3);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `payment`
+-- Table structure for table `payment`
 --
 
 CREATE TABLE `payment` (
@@ -155,11 +158,12 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
   `id` bigint(20) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `price` double NOT NULL,
   `stock` int(11) NOT NULL,
@@ -167,34 +171,34 @@ CREATE TABLE `product` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `picture`, `price`, `stock`, `title`) VALUES
-(1, 'apple-watch', 12000000, 200, 'Casio MTP-1374L-1AVDF'),
-(2, 'galaxy watch 4', 9000000, 50, 'Đồng hồ samsung watch 4'),
-(3, 'G - Sock Nam', 4612000, 50, 'G-SHOCK NAM – QUARTZ (PIN)'),
-(4, 'redmi-watch-2', 1190000, 25, 'Xiaomi Redmi Watch 2 Lite'),
-(6, 'CASIO EFR-526L-2AVUDF ', 3356000, 35, 'CASIO EFR-526L-2AVUDF – NAM '),
-(7, 'Huawei Band 7', 949000, 100, 'Đồng hồ Huawei Band 7'),
-(8, 'Mi Band 6', 790000, 200, 'Đồng hồ Xiaomi Mi Band 6'),
-(9, 'Apple watch SE', 5990000, 150, 'Apple Watch SE 40mm'),
-(10, 'Oppo Band', 790000, 50, 'Đồng hồ Oppo Band'),
-(11, 'CASIO LA680WGA-9DF', 1892000, 50, 'CASIO LA680WGA-9DF'),
-(12, 'BABY-G NỮ – QUARTZ (PIN)', 4343000, 100, 'BABY-G NỮ – QUARTZ (PIN)'),
-(13, 'Apple Watch SE 44mm (GPS) ', 7950000, 200, 'Apple Watch SE 44mm (GPS) '),
-(14, 'Garmin Forunner 745', 8490000, 50, 'Garmin Forunner 745'),
-(15, 'Galaxy Watch5 40mm LTE', 7490000, 100, 'Galaxy Watch 5 40mm LTE'),
-(16, 'Galaxy Watch5 Pro\r\n', 10250000, 200, 'Samsung Galaxy Watch 5 Pro\r\n'),
-(17, 'G-SHOCK GA-1000', 8576000, 50, 'G-SHOCK GA-1000'),
-(18, 'Đồng hồ trẻ em Myalo KidsPhone ', 2790000, 50, 'Đồng hồ trẻ em Myalo KidsPhone '),
-(19, 'Đồng hồ định vị trẻ em myFirst Fone R1', 2790000, 100, 'Đồng hồ định vị trẻ em Fone R1'),
-(20, 'Đồng hồ định vị trẻ em myFirst Fone R1S', 2990000, 200, 'Đồng hồ định vị trẻ em Fone R1S');
+INSERT INTO `product` (`id`, `description`, `picture`, `price`, `stock`, `title`) VALUES
+(1, '', 'apple-watch', 12000000, 200, 'Casio MTP-1374L-1AVDF'),
+(2, '', 'galaxy watch 4', 9000000, 50, 'Đồng hồ samsung watch 4'),
+(3, '', 'G - Sock Nam', 4612000, 50, 'G-SHOCK NAM – QUARTZ (PIN)'),
+(4, '', 'redmi-watch-2', 1190000, 25, 'Xiaomi Redmi Watch 2 Lite'),
+(6, '', 'CASIO EFR-526L-2AVUDF ', 3356000, 35, 'CASIO EFR-526L-2AVUDF – NAM '),
+(7, '', 'Huawei Band 7', 949000, 100, 'Đồng hồ Huawei Band 7'),
+(8, '', 'Mi Band 6', 790000, 200, 'Đồng hồ Xiaomi Mi Band 6'),
+(9, '', 'Apple watch SE', 5990000, 150, 'Apple Watch SE 40mm'),
+(10, '', 'Oppo Band', 790000, 50, 'Đồng hồ Oppo Band'),
+(11, '', 'CASIO LA680WGA-9DF', 1892000, 50, 'CASIO LA680WGA-9DF'),
+(12, '', 'BABY-G NỮ – QUARTZ (PIN)', 4343000, 100, 'BABY-G NỮ – QUARTZ (PIN)'),
+(13, '', 'Apple Watch SE 44mm (GPS) ', 7950000, 200, 'Apple Watch SE 44mm (GPS) '),
+(14, '', 'Garmin Forunner 745', 8490000, 50, 'Garmin Forunner 745'),
+(15, '', 'Galaxy Watch5 40mm LTE', 7490000, 100, 'Galaxy Watch 5 40mm LTE'),
+(16, '', 'Galaxy Watch5 Pro\r\n', 10250000, 200, 'Samsung Galaxy Watch 5 Pro\r\n'),
+(17, '', 'G-SHOCK GA-1000', 8576000, 50, 'G-SHOCK GA-1000'),
+(18, '', 'Đồng hồ trẻ em Myalo KidsPhone ', 2790000, 50, 'Đồng hồ trẻ em Myalo KidsPhone '),
+(19, '', 'Đồng hồ định vị trẻ em myFirst Fone R1', 2790000, 100, 'Đồng hồ định vị trẻ em Fone R1'),
+(20, '', 'Đồng hồ định vị trẻ em myFirst Fone R1S', 2990000, 200, 'Đồng hồ định vị trẻ em Fone R1S');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -203,7 +207,7 @@ CREATE TABLE `role` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`role_id`, `name`) VALUES
@@ -213,7 +217,7 @@ INSERT INTO `role` (`role_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `shipping`
+-- Table structure for table `shipping`
 --
 
 CREATE TABLE `shipping` (
@@ -226,7 +230,7 @@ CREATE TABLE `shipping` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `size`
+-- Table structure for table `size`
 --
 
 CREATE TABLE `size` (
@@ -236,7 +240,7 @@ CREATE TABLE `size` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `size`
+-- Dumping data for table `size`
 --
 
 INSERT INTO `size` (`id`, `value`, `product_id`) VALUES
@@ -301,7 +305,7 @@ INSERT INTO `size` (`id`, `value`, `product_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -315,17 +319,17 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `address_id`) VALUES
-(1, 'admin@admin.com', 'Thái', 'Phan', '$2a$12$i67EhfS3Hs00vQMOX2/ys.mhue6ycP00vmOA7gApH0aJlfnp/XGDS', 'admin', NULL),
+(1, 'admin@admin.com', NULL, NULL, '$2a$12$i67EhfS3Hs00vQMOX2/ys.mhue6ycP00vmOA7gApH0aJlfnp/XGDS', 'admin', NULL),
 (2, 'thai@gmail.com', 'Thai', 'Phan', '$2a$12$RHbvCpcXkMrVRWtSIS9EbOdo1T33XxIt173qXWmIs6vdoFxKUroxy', 'thaithai', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_order`
+-- Table structure for table `user_order`
 --
 
 CREATE TABLE `user_order` (
@@ -342,7 +346,7 @@ CREATE TABLE `user_order` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -352,33 +356,33 @@ CREATE TABLE `user_role` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`user_role_id`, `role_id`, `user_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
+(1, 2, 1),
+(2, 1, 1),
 (3, 1, 2);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `address`
+-- Indexes for table `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `brand`
+-- Indexes for table `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKn716qjx07n1pg9eqd712tk7tb` (`product_id`);
 
 --
--- Chỉ mục cho bảng `cart_item`
+-- Indexes for table `cart_item`
 --
 ALTER TABLE `cart_item`
   ADD PRIMARY KEY (`id`),
@@ -387,34 +391,34 @@ ALTER TABLE `cart_item`
   ADD KEY `FKjnaj4sjyqjkr4ivemf9gb25w` (`user_id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKqqm689b1x9dotoq6okskaxnx4` (`product_id`);
 
 --
--- Chỉ mục cho bảng `payment`
+-- Indexes for table `payment`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKt7a73xusjdnnsuespcitb683h` (`order_id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`role_id`),
   ADD UNIQUE KEY `UK_8sewwnpamngi6b1dwaa88askk` (`name`) USING HASH;
 
 --
--- Chỉ mục cho bảng `shipping`
+-- Indexes for table `shipping`
 --
 ALTER TABLE `shipping`
   ADD PRIMARY KEY (`id`),
@@ -422,21 +426,21 @@ ALTER TABLE `shipping`
   ADD KEY `FKlh4uncaukk0s3poj5pmv9cm9u` (`order_id`);
 
 --
--- Chỉ mục cho bảng `size`
+-- Indexes for table `size`
 --
 ALTER TABLE `size`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKj2c44yesw2o1kacfugn5oh6sg` (`product_id`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FKddefmvbrws3hvl5t0hnnsv8ox` (`address_id`);
 
 --
--- Chỉ mục cho bảng `user_order`
+-- Indexes for table `user_order`
 --
 ALTER TABLE `user_order`
   ADD PRIMARY KEY (`id`),
@@ -445,7 +449,7 @@ ALTER TABLE `user_order`
   ADD KEY `FKj86u1x7csa8yd68ql2y1ibrou` (`user_id`);
 
 --
--- Chỉ mục cho bảng `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`user_role_id`),
@@ -453,65 +457,65 @@ ALTER TABLE `user_role`
   ADD KEY `FK859n2jvi8ivhui0rl0esws6o` (`user_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `address`
+-- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `brand`
+-- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT cho bảng `cart_item`
+-- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `payment`
+-- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT cho bảng `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `role_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `shipping`
+-- AUTO_INCREMENT for table `shipping`
 --
 ALTER TABLE `shipping`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `size`
+-- AUTO_INCREMENT for table `size`
 --
 ALTER TABLE `size`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
