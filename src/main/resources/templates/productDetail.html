@@ -77,93 +77,12 @@
           <section class="product_description_area">
           
 				<div class="container">
-						<div class="section-intro pb-60px" style="margin-bottom: 50px;">
-			        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
-			      		</div>
-						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item">
-								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mô tả</a>
-							</li>
-						</ul>
-						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-								<p th:text="${product.description}"></p>
-
-							</div>
-						</div>
-							<!--
-							<li class="nav-item">
-								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-								 aria-selected="false">Thông số</a>
-							</li>
-							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-								<div class="row">
-									<div></div>
-									<p>Bảng thông số sản phẩm đồng hồ. Lưu ý thông số chỉ mang tính chất tham khảo và có thể thay đổi theo thời gian. Chân thành cảm ơn quý khách! </p>
-									<div class="table-responsive" style="width: 200%;">
-										<table class="table">
-											<tbody>
-												<tr>
-													<td class="text-center">
-														<h5>Width</h5>
-													</td>
-													<td class="text-center">
-														<h5>128mm</h5>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center">
-														<h5>Height</h5>
-													</td>
-													<td class="text-center">
-														<h5>508mm</h5>
-													</td>
-												</tr>
-												
-											</tbody>
-										</table>
-								    </div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-								<div class="row">
-									<div class="col-lg-6">
-										
-										<div class="review_list">
-											<div class="review_item">
-												<div class="media">
-													<div class="d-flex">
-														<img src="image/product/pictures/apple-watch.jpg" alt="" style="width: 70px; height: 70px;">
-													</div>
-													<div class="media-body">
-														<h4>Blake Ruiz</h4>
-													</div>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-													commodo</p>
-											</div>
-											<div class="review_item">
-												<div class="media">
-													<div class="d-flex">
-														<img src="image/product/pictures/review-1.png" alt="" style="width: 70px; height: 70px;">
-													</div>
-													<div class="media-body">
-														<h4>Blake Ruiz</h4>
-													</div>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-													commodo</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div></div>-->
-							
-						
-					</div>
+					<div class="section-intro pb-60px" style="margin-bottom: 50px;">
+		        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
+		        		
+		      		</div>
+		      		<p th:text="${product.description}"></p>
+				</div>
 		</section>
 		<!-- ================End Product Description Area =================-->
         </div>
