@@ -52,7 +52,7 @@
                 <a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h6 bold d-inline-block" th:text=${cartItem.product.title}></a>
                   <br>
                   <div><small><b>Kích thước bề mặt</b>: <span th:text="${cartItem.size}"></span></small></div>                  
-                  <small><b>Đơn giá</b>:<span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')} + 'VNĐ'"></span></small>
+                  <small><b>Đơn giá</b>:<span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')} + ' VNĐ'"></span></small>
               </div>
               
             </div>

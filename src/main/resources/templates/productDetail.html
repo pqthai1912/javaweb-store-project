@@ -8,10 +8,10 @@
   
   <div class="container page-content mt-3 mb-3">  
     <div th:if="${addProductSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Added item to the shopping cart!</strong>
+      <strong>Đã thêm đồng hồ vào giỏ</strong>
       <div class="d-flex mt-2">
-        <a th:href="@{/store}" class="btn btn-info rounded-pill mx-2"><i data-feather="arrow-left"></i> Continue shopping</a>            
-        <a th:href="@{/shopping-cart/cart}" class="btn btn-primary rounded-pill mx-2">Go to shopping cart <i data-feather="arrow-right"></i></a>
+        <a th:href="@{/store}" class="btn btn-info rounded-pill mx-2"><i data-feather="arrow-left"></i> Tiếp tục mua sắm</a>            
+        <a th:href="@{/shopping-cart/cart}" class="btn btn-primary rounded-pill mx-2">Đi đến giỏ hàng <i data-feather="arrow-right"></i></a>
       </div>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -61,10 +61,10 @@
               
             </form>
             <hr>
-            <div class="pt-1 mb-2"><span class="text-medium">Brand:&nbsp;</span><a href="#" th:each="brand : ${product.brands}" th:value="${brand.getName()}" th:text="${brand.getName()} + ' '"></a></div>
+            <div class="pt-1 mb-2"><span class="text-medium">Brand:&nbsp;</span><b><a th:each="brand : ${product.brands}" th:value="${brand.getName()}" th:text="${brand.getName()} + ' '"></a></b></div>
             <div class="padding-bottom-1x mb-2">
             	<span class="text-medium">Categories:&nbsp;</span>
-            	<a class="navi-link" href="#" th:each="category : ${product.categories}" th:value="${category.getName()}" th:text="${category.getName()} + ' '"></a>
+            	<b><a class="navi-link" th:each="category : ${product.categories}" th:value="${category.getName()}" th:text="${category.getName()} + ' '"></a></b>
            	</div>
           </div>
         </div>
