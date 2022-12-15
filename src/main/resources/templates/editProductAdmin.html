@@ -16,9 +16,13 @@
 						<input type="hidden" class="form-control" name="id" th:value="${product.id}" id="id">
 					</div>
 					<div class="form-group">
+						<input type="hidden" class="form-control" name="currentProductName" th:value="${product.title}" id="currentProductName">
+					</div>
+					<div class="form-group">
 						<label>Tên sản phẩm</label> 
 						<input type="text" required="required" class="form-control" name="productName" th:value="${product.title}" id="productName">
 					</div>
+					<p class="text-danger" th:text=${productNameExists} th:if=${productNameExists}></p>
 					<div class="form-group">
 						<label>Giá sản phẩm</label> 
 						<input type="number" required="required" class="form-control" name="productPrice" th:value="${product.price}" id="productPrice">

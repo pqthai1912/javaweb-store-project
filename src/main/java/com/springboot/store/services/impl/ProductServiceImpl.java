@@ -69,7 +69,13 @@ public class ProductServiceImpl implements ProductService {
 		Optional<Product> opt = productRepository.findById(id);
 		return opt.get();
 	}
+	
+	@Override
+	public Product findByTitle(String productName) {
+		return productRepository.findByTitle(productName);
+	}
 
+	
 	@Override
 	@CacheEvict(value = { "sizes", "categories", "brands" }, allEntries = true)
 	public Product saveProduct(Product product) {
@@ -102,11 +108,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product createProduct(String productName, double price, Integer amount, String description) {
+	public Product createProduct(String productName, double price, Integer amount, String description, String picture) {
 		Product product = new Product();
 		product.setTitle(productName);
 		product.setPrice(price); 
 		product.setStock(amount);
+		product.setPicture(picture);
 		product.setDescription(description);
 
 		return productRepository.save(product);//lưu lên db
@@ -136,4 +143,5 @@ public class ProductServiceImpl implements ProductService {
 	public Brand findBrandByProductId(Long id) {
 		return brandRepository.findBrandByProductId(id);
 	}
+
 }

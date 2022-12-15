@@ -1,5 +1,9 @@
 package com.springboot.store.controllers;
 
+import java.io.IOException;
+import java.nio.file.Path;
+
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.store.filters.ProductFilterForm;
@@ -51,11 +56,14 @@ public class ProductAdminController {
 		return "addProductAdmin";
 	}
 	
+	@Autowired
+	ServletContext app;
+	
 	@PostMapping("/product/add-product")
 	public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResults,
 			  @ModelAttribute("productName") String productName, @ModelAttribute("productPrice") double productPrice, 
 			  @ModelAttribute("productStock") Integer productStock, @ModelAttribute("productDesc") String productDesc, @ModelAttribute("productBrand") String productBrand,
-			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productSize") String productSize,
+			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productSize") String productSize, @ModelAttribute("photo") MultipartFile photo,
 			  @ModelAttribute("brand") Brand brand, @ModelAttribute("category") Category category, @ModelAttribute("size") Size size,
 			  RedirectAttributes redirectAttributes, Model model) {
 		
@@ -63,11 +71,34 @@ public class ProductAdminController {
 		if (bindingResults.hasErrors()) {
 			return "redirect:/product/add-product";
 		}		
+		if (productService.findByTitle(productName) != null ) {
+			redirectAttributes.addFlashAttribute("productNameExists", "Sản phẩm này đã tồn tại.");
+			invalidFields = true;
+		}
+		if (!photo.getContentType().equals("image/jpeg") ) {
+			redirectAttributes.addFlashAttribute("fileTypeNotAllowed", "Ảnh phải có định dạng jpg.");
+			invalidFields = true;
+		}
 		if (invalidFields) {
 			return "redirect:/product/add-product";
 		}		
 		
-		product = productService.createProduct(productName, productPrice, productStock, productDesc);
+		String path = app.getRealPath("/");
+		path = path.substring(0, path.length() - 7);
+		path = path + "resources\\static\\image\\product\\pictures\\";
+		
+		String fullFileName = photo.getOriginalFilename();
+		String fileName = fullFileName.substring(0, fullFileName.lastIndexOf('.'));
+		
+		try {
+			photo.transferTo(Path.of(path + fullFileName));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		product = productService.createProduct(productName, productPrice, productStock, productDesc, fileName);
 		brand = new Brand(productBrand, product);
 		productService.saveBrand(brand);
 		category = new Category(productCategory, product);
@@ -98,14 +129,19 @@ public class ProductAdminController {
 	
 	@PostMapping("/product/edit-product")
 	public String editProduct(
-			  @ModelAttribute("id") Long id, @ModelAttribute("productName") String productName, @ModelAttribute("productPrice") double productPrice, 
+			  @ModelAttribute("id") Long id, @ModelAttribute("currentProductName") String currentProductName,@ModelAttribute("productName") String productName, @ModelAttribute("productPrice") double productPrice, 
 			  @ModelAttribute("productStock") Integer productStock, @ModelAttribute("productBrand") String productBrand,
 			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productDesc") String productDesc, 
 			  RedirectAttributes redirectAttributes) {
 		
 		boolean invalidFields = false;	
+		if ((productService.findByTitle(productName) != null ) && (currentProductName.compareTo(productName) != 0 ) ) {
+			redirectAttributes.addFlashAttribute("productNameExists", "Sản phẩm này đã tồn tại.");
+			
+			invalidFields = true;
+		} 
 		if (invalidFields) {
-			return "redirect:/product/edit-product";
+			return "redirect:/product/edit-product?id=" + id;
 		}		
 		
 		Product product = productService.findProductById(id);
