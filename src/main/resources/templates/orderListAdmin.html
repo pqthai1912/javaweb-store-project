@@ -5,6 +5,48 @@
 <body class="d-flex flex-column">
   <div th:replace="common/headerAdmin :: navbar"> </div>
       
+      <div class="col mt-3 mt-md-0">
+          <div class="card">
+            <div class="card-body">
+              <h3>Danh sách đơn hàng</h3><hr>
+              <div class="table-responsive">
+                <table class="table table-hover" data-addclass-on-xs="table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col"> ID đơn hàng</th>
+                      <th scope="col">Ngày đặt hàng</th>
+                      <th scope="col" class="text-right">Tổng tiền</th>
+                      <th scope="col" class="text-center">Cần xử lý</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="order : ${orders}">
+                      <th scope="row" ><a th:href="@{/product/order-list/order-detail?order=}+${order.id}" class="text-primary">ORD<span th:text="${order.id}"></span></a></th>                      
+                      <td th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></td>
+                      <td class="text-right"><span th:text="${order.orderTotal}"></span> VNĐ</td>
+                      <td class="text-center">
+						  <span th:if="${order.orderStatus == 'Đang xử lý'}">
+							  <form th:action="@{/product/order-list/}" method="post">
+								  <input type="hidden" th:value="${order.id}" th:attr="name='orderId'"/>
+								  <input type="hidden" th:attr="name='approved'" value= "1"/>
+								  <button type="submit" style="background-color: green; color: white;">Xác nhận</button>
+							  </form>
+							  <form th:action="@{/product/order-list/}" method="post" th:object="${order.id}">
+								  <input type="hidden" th:value="${order.id}" th:attr="name='orderId'"/>
+								  <input type="hidden" th:attr="name='approved'" value= "0"/>
+								  <button type="submit" style="background-color: red; color: white;" >Không</button>
+							  </form>
+						  </span>
+						  <span th:if="${order.orderStatus == 'Đang vận chuyển'}" class="badge badge-info rounded" th:text="${order.orderStatus}"></span>
+						  </td>
+
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
    
 </body>
 </html>

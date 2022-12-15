@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
 		LocalDate estimatedDeliveryDate = today.plusDays(5);				
 		order.setOrderDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		order.setShippingDate(Date.from(estimatedDeliveryDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-		order.setOrderStatus("In Progress");
+		order.setOrderStatus("Đang xử lý"); // set trạng thái
 		
 		order = orderRepository.save(order);
 		
@@ -69,9 +69,28 @@ public class OrderServiceImpl implements OrderService {
 	public Order findOrderWithDetails(Long id) {
 		return orderRepository.findEagerById(id);
 	}	
+	
+	public List<Order> findAll(){
+		return orderRepository.findAll();
+	}
 
 	public List<Order> findByUser(User user) {
 		return orderRepository.findByUser(user);
+	}
+	
+	public Order findOrderById(Long id) {
+		return orderRepository.findOrderById(id);
+	}
+	
+	// cập nhật trạng thái
+	@Override
+	public void updateStatus(Order order, Integer approved) {
+		if (approved == 0) {
+			orderRepository.deleteById(order.getId());
+		} else {
+			order.setOrderStatus("Đang vận chuyển");
+			orderRepository.save(order);
+		}
 	}
 
 }

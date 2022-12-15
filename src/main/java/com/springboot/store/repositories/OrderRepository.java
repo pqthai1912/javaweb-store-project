@@ -9,7 +9,9 @@ import com.springboot.store.models.Order;
 import com.springboot.store.models.User;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
+	Order findOrderById(Long id);
 
+	List<Order> findAll();
 	List<Order> findByUser(User user); 
 	
 	@EntityGraph(attributePaths = { "cartItems", "payment", "shipping" })
