@@ -24,9 +24,11 @@ public interface ProductService {
 
 	Product findProductById(Long id);
 	
+	Product findByTitle(String productName);
+	
 	Product saveProduct(Product product);
 	
-	Product createProduct(String productName, double price, Integer amount, String description);
+	Product createProduct(String productName, double price, Integer amount, String description, String photo);
 
 	void deleteProductById(Long id);
 	
@@ -40,5 +42,7 @@ public interface ProductService {
 	List<String> getAllBrands();
 	Brand findBrandByProductId(Long id);
 	Brand saveBrand(Brand brand);
+
+	
 
 }

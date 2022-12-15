@@ -16,6 +16,7 @@
 						<label>Tên sản phẩm</label> 
 						<input type="text" required="required" class="form-control" name="productName" placeholder="Tên sản phẩm" id="productName">
 					</div>
+					<p class="text-danger" th:text=${productNameExists} th:if=${productNameExists}></p>
 					<div class="form-group">
 						<label>Giá sản phẩm</label> 
 						<input type="number" required="required" class="form-control" name="productPrice" placeholder="Giá sản phẩm" id="productPrice">
@@ -26,8 +27,9 @@
 					</div>
 					<div class="form-group">
 						<label>Ảnh sản phẩm</label> <br>
-						<input type="file" name="photo" placeholder="Enter photo" id="photo">
+						<input type="file" required="required" name="photo" placeholder="Enter photo" id="photo">
 					</div>				
+					<p class="text-danger" th:text=${fileTypeNotAllowed} th:if=${fileTypeNotAllowed}></p>
 					<div class="form-group">
 						<label>Brand</label> 
 						<input type="text" required="required" class="form-control" name="productBrand" placeholder="Brand" id="productBrand">
