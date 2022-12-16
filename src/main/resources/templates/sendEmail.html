@@ -13,15 +13,15 @@
 					<div class="form-group">
 						<label>To:</label> 
 						<input type="text" required="required"
-						class="form-control" th:classappend="${invalidEmail} ? is-invalid"
-						name="to" placeholder="Enter Email">
+						class="form-control" name="to" placeholder="Enter Email">
 					</div>
+					<p class="text-danger" th:text=${invalidEmail} th:if=${invalidEmail}></p>
 					<div class="form-group">
 						<label>Subject:</label> 
 						<input type="text" required="required"
-						class="form-control" th:classappend="${emptySubject} ? is-invalid"
-						name="subject" placeholder="Enter Subject">
+						class="form-control" name="subject" placeholder="Enter Subject">
 					</div>
+					<p class="text-danger" th:text=${emptySubject} th:if=${emptySubject}></p>
 					<div class="form-group">
 						<label for="content">Content:</label>
 						<textarea class="form-control" rows="3"  name="content"></textarea>

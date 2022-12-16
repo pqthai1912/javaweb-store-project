@@ -6,7 +6,7 @@
   <div th:replace="common/headerAdmin :: navbar"> </div>
       
       <div class="col mt-3 mt-md-0">
-          <div class="card">
+          <div class="card mt-4">
             <div class="card-body">
               <h3>Danh sách đơn hàng</h3><hr>
               <div class="table-responsive">
@@ -29,12 +29,13 @@
 							  <form th:action="@{/product/order-list/}" method="post">
 								  <input type="hidden" th:value="${order.id}" th:attr="name='orderId'"/>
 								  <input type="hidden" th:attr="name='approved'" value= "1"/>
-								  <button type="submit" style="background-color: green; color: white;">Xác nhận</button>
+								  <button type="submit" class="btn btn-primary text-light rounded-pill atc-demo">Xác nhận</button>
 							  </form>
+							  <br>
 							  <form th:action="@{/product/order-list/}" method="post" th:object="${order.id}">
 								  <input type="hidden" th:value="${order.id}" th:attr="name='orderId'"/>
 								  <input type="hidden" th:attr="name='approved'" value= "0"/>
-								  <button type="submit" style="background-color: red; color: white;" >Không</button>
+								  <button type="submit" class="btn btn-danger text-light rounded-pill atc-demo">Hủy đơn hàng</button>
 							  </form>
 						  </span>
 						  <span th:if="${order.orderStatus == 'Đang vận chuyển'}" class="badge badge-info rounded" th:text="${order.orderStatus}"></span>

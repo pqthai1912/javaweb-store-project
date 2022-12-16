@@ -35,6 +35,7 @@
 						<label>Ảnh sản phẩm</label> <br>
 						<input type="file" name="photo" placeholder="Enter photo" id="photo">
 					</div>				
+					<p class="text-danger" th:text=${fileTypeNotAllowed} th:if=${fileTypeNotAllowed}></p>
 					<div class="form-group">
 						<label>Brand</label> 
 						<input type="text" required="required" class="form-control" name="productBrand" th:value="${brand.name}" id="productBrand">

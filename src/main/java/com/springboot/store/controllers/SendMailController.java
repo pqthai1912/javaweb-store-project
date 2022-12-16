@@ -37,11 +37,11 @@ public class SendMailController {
 		try {
 			boolean invalidFields = false;
 			if(userService.findByEmail(to) == null) {
-				redirectAttributes.addFlashAttribute("invalidEmail", true);
+				redirectAttributes.addFlashAttribute("invalidEmail", "Vui lòng nhập địa chỉ Email.");
 				invalidFields = true;
 			}
 			else if(subject == null) {
-				redirectAttributes.addFlashAttribute("emptySubject", true);
+				redirectAttributes.addFlashAttribute("emptySubject", "Chủ đề mail không được để trống.");
 				invalidFields = true;
 			}
 			else if(invalidFields) {
