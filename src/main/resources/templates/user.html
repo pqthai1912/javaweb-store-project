@@ -7,31 +7,35 @@
         <div class="container">
             <h2 style="margin-top: 15px">DANH SÁCH TÀI KHOẢN NGƯỜI DÙNG</h2>
             <p><a class="btn btn-primary" href="/product/register-user">ADD USER</a></p>
+            
             <table class="table table-bordered" style="background-color: white;">
                 <thead>
                     <tr>
                     	<th>ID</th>
                         <th>UserName</th>
-                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
-                        <th>Status</th>
+                        <th>Thao Tác</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="item: ${USERS}">
                     	 <td th:text="${item.id}"></td>
                         <td th:text="${item.username}"></td>
-                        <td th:text="${item.password}"></td>
+                        <td th:text="${item.firstName}"></td>
+                        <td th:text="${item.lastName}"></td>
                          <td th:text="${item.email}"></td>
-                         <td th:text="${item.Trang_thai}"></td>
+                         
                 
-                        <td>|
-                         <a class="btn btn-danger btn-sm" th:href="@{'/delete/'+ ${item.id}}">Del</a></td>
+                        <td>|<a class="btn btn-danger btn-sm" th:href="@{'/delete/'+ ${item.id}}">Delete</a></td>
                     </tr>
                    
                    
                 </tbody>
             </table>
+            
         </div>
         
         <div th:replace="common/header :: footer"> </div>
