@@ -1,7 +1,9 @@
 package com.springboot.store.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,12 +27,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.springboot.store.other.Authority;
 import com.springboot.store.other.UserRole;
+
+import lombok.Builder;
+import lombok.Data;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @NamedEntityGraph(name = "UserComplete", attributeNodes = {
 		@NamedAttributeNode(value = "userRoles", subgraph = "role-subgraph") }, subgraphs = {
 				@NamedSubgraph(name = "role-subgraph", attributeNodes = { @NamedAttributeNode("role") }) })
 @Entity
+@Data
+@Builder
 @SuppressWarnings("serial")
 public class User implements UserDetails {
 
@@ -43,6 +51,8 @@ public class User implements UserDetails {
 	private String password;
 	private String firstName;
 	private String lastName;
+	private State state;
+	private String Trang_thai;
 	@NotNull
 	@Email
 	private String email;
@@ -151,6 +161,55 @@ public class User implements UserDetails {
 
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
+	}
+
+	public String getTrang_thai() {
+		return Trang_thai;
+	}
+
+	public void setTrang_thai(String trang_thai) {
+		Trang_thai = trang_thai;
+	}
+	
+	public static List<User> ls = new ArrayList<User>();
+	
+	public User findByUsername(String username) {
+		for(User user : ls) {
+			if(user.getUsername().equals(username)) {
+				return user;
+			}
+		}
+		
+		return null;
+	}
+	public int update(User user) {
+		for(int i = 0; i<ls.size();i++) {
+			if(ls.get(i).getUsername().equals(user.getUsername())) {
+				ls.set(i, user);
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	public int save(User user) {
+		if(findByUsername(user.getUsername())!= null) {
+			update(user);
+		}else {
+			ls.add(user);
+		}
+		return 1;
+	}
+	public int delete(String username) {
+		User u = findByUsername(username);
+		if(u != null) {
+			ls.remove(u);
+			return 1;
+		}
+		return 0;
+	}
+	public List<User> getAll(){
+		return ls;
 	}
 
 }

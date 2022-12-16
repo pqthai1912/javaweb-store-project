@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/headerAdmin :: common-header">
+    <body>
+        <div th:replace="common/headerAdmin :: navbar"></div>
+        <div class="container">
+            <h2>DANH SACH NGUOI DUNG</h2>
+            <p><a class="btn btn-primary" href="/product/register-user">ADD USER</a></p>
+            <table class="table table-bordered" style="background-color: white;">
+                <thead>
+                    <tr>
+                    	<th>ID</th>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item: ${USERS}">
+                    	 <td th:text="${item.id}"></td>
+                        <td th:text="${item.username}"></td>
+                        <td th:text="${item.password}"></td>
+                         <td th:text="${item.email}"></td>
+                         <td th:text="${item.Trang_thai}"></td>
+                
+                        <td><a class="btn btn-primary btn-sm" th:href="@{'/edit/'+ ${item.username}}">Edit</a> |
+                         <a class="btn btn-danger btn-sm" th:href="@{'/delete/'+ ${item.id}}">Del</a></td>
+                    </tr>
+                   
+                   
+                </tbody>
+            </table>
+        </div>
+        
+        <div th:replace="common/header :: footer"> </div>
+  		<div th:replace="common/header :: body-scripts"> </div>
+  
+    </body>
+</html>

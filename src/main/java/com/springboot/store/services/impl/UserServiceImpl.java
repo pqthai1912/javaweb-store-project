@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,13 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	// Override findAll
+	 
+	 @Override
+	    public List < User > findAll() {
+	        return (List<User>) userRepository.findAll();
+	    }
+	
 	@Autowired
 	private RoleRepository roleRepository;
 
@@ -37,11 +45,27 @@ public class UserServiceImpl implements UserService {
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
-
+	
+	/*
+	@Override
+	public void delete(String username) {
+		//User user = findByUsername(username);
+		 userRepository.delete(username);
+		
+	}
+	*/
+	
+	@Override
+	@CacheEvict(value = { "address", "userRoles" }, allEntries = true)
+	public void deleteUserById(long id) {	
+		userRepository.deleteById(id);
+	   }
+	 
 	@Override
 	public User findByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+	
 
 	@Override
 	public void save(User user) {
