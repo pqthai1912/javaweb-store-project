@@ -105,7 +105,6 @@ public class ProductAdminController {
 		productService.saveCategory(category);
 		size = new Size(productSize, product);
 		productService.saveSize(size);
-		//TODO Popup xác nhận thêm sản phẩm; thêm trường brand, size,...; validation; popup hiển thị thểm sản phẩm thành công
 		return "redirect:/product/add-product";
 	}
 	
@@ -131,44 +130,67 @@ public class ProductAdminController {
 	public String editProduct(
 			  @ModelAttribute("id") Long id, @ModelAttribute("currentProductName") String currentProductName,@ModelAttribute("productName") String productName, @ModelAttribute("productPrice") double productPrice, 
 			  @ModelAttribute("productStock") Integer productStock, @ModelAttribute("productBrand") String productBrand,
-			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productDesc") String productDesc, 
-			  RedirectAttributes redirectAttributes) {
+			  @ModelAttribute("productCategory") String productCategory, @ModelAttribute("productDesc") String productDesc, @ModelAttribute("photo") MultipartFile photo,
+			  RedirectAttributes redirectAttributes, Model model) {
 		
 		boolean invalidFields = false;	
 		if ((productService.findByTitle(productName) != null ) && (currentProductName.compareTo(productName) != 0 ) ) {
 			redirectAttributes.addFlashAttribute("productNameExists", "Sản phẩm này đã tồn tại.");
 			
 			invalidFields = true;
-		} 
+		}
+		if (!photo.getContentType().equals("image/jpeg") ) {
+			redirectAttributes.addFlashAttribute("fileTypeNotAllowed", "Ảnh phải có định dạng jpg.");
+			invalidFields = true;
+		}
 		if (invalidFields) {
 			return "redirect:/product/edit-product?id=" + id;
 		}		
+		
+		String path = app.getRealPath("/");
+		path = path.substring(0, path.length() - 7);
+		path = path + "resources\\static\\image\\product\\pictures\\";
+		
+		String fullFileName = photo.getOriginalFilename();
+		String fileName = fullFileName.substring(0, fullFileName.lastIndexOf('.'));
+		
+		
 		
 		Product product = productService.findProductById(id);
 		Brand brand = productService.findBrandByProductId(id);
 		Category category = productService.findCategoryByProductId(id);
 		
+		
 		product.setTitle(productName);
 		product.setPrice(productPrice);
 		product.setStock(productStock);
 		product.setDescription(productDesc);
-		brand.setName(productBrand);
-		brand.setProduct(product);
+		product.setPicture(fileName);
+		brand.setName(productBrand);	
+//		brand.setProduct(product);
 		category.setName(productCategory);
-		category.setProduct(product);
+//		category.setProduct(product);
+		
+		try {
+			photo.transferTo(Path.of(path + fullFileName));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		
 		productService.saveBrand(brand);
 		productService.saveCategory(category);
 		productService.saveProduct(product);
+
+		
 		
 		return "redirect:/product/product-detail?id=" + id;
-//TODO brand, category
 	}
 	
 	@GetMapping("/product/delete-product")
 	public String deleteProduct(@PathParam("id") Long id, Model model) {
-//		Product product = productService.findProductById(id);
 		productService.deleteProductById(id);
 		return "redirect:/product/product-list";
 	}
