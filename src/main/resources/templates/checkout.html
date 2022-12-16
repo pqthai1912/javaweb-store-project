@@ -35,18 +35,18 @@
                           	<a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h5 font-weight-bold d-inline-block" th:text=${cartItem.product.title}></a>
                             <div><i data-feather="check-circle" class="text-success"></i> In Stock</div>                  
                             <div><small><b>Size</b>: <span th:text="${cartItem.size}"></span></small></div>                  
-                            <small><b>Giá</b>: <span class="text-danger" th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'COMMA', 2, 'POINT')} + 'VNĐ'"></span></small>
+                            <small><b>Giá</b>: <span class="text-danger" th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></small>
                         </div>
                       </div> 
                     </div>  
                     <div class="col-12 col-md-6 text-right">
                       <span style="margin-right: 2rem;">x<span th:text="${cartItem.qty}"></span></span>                           
-                      <span class="font-weight-bold text-danger"><span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')} + 'VNĐ'"></span></span>
+                      <span class="font-weight-bold text-danger"><span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></span>
                     </div>                  
                   </div>                  
                   <div class="text-center mx-auto mt-3">
                     <small class="counter">Tổng tiền</small>
-                    <h3 class="font-weight-bold text-warning mt-1"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')} + 'VNĐ'"></span></h3>
+                    <h3 class="font-weight-bold text-warning mt-1"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></h3>
                   </div>                    
                   <div class="d-flex flex-wrap justify-content-between align-items-center mt-3">      
                     <a th:href="@{/shopping-cart/cart}" class="btn btn-info rounded-pill  "><i data-feather="arrow-left"></i>Chỉnh sửa giỏ hàng</a>           
@@ -73,7 +73,7 @@
                     </div> 
                     <div class="form-group col-12">
                       <label for="phone">Số điện thoại</label> 
-                      <input type="number" class="form-control" id="phone" name="phone" required="required" maxlength="10"/>
+                      <input type="tel" class="form-control" id="phone" pattern="[0-9]+" name="phone" required="required" maxlength="10" title="Vui lòng chỉ nhập số"/>
                     </div>
                     <div class="form-group col-12">
                       <label for="streetAddress">Địa chỉ (Số nhà/ tên đường)</label> 
@@ -99,7 +99,7 @@
                     <div class="form-group col-6">
                       <label for="zipCode">Mã bưu chính</label> <input
                         type="text" class="form-control" id="zipCode"
-                        th:name="zipCode" required="required" />
+                        th:name="zipCode" required="required" pattern="[0-9]+" title="Vui lòng chỉ nhập số"/>
                     </div>                                      
                   </div>
                   <div class="mt-2 text-right">
@@ -140,8 +140,8 @@
                       <div class="form-group">
                         <label for="cardNumber">Mã số thẻ:</label>
                         <div class="input-group">
-                          <input type="number" class="form-control" id="cardNumber"
-                            required="required" th:name="cardNumber" minlength="12" maxlength="19">
+                          <input type="tel" class="form-control" id="cardNumber"
+                            required="required" th:name="cardNumber" pattern="[0-9]+" maxlength="16" title="Vui lòng chỉ nhập số">
                         </div>
                       </div>
                     </div>
@@ -190,8 +190,8 @@
                     </div>
                     <div class="col-5">
                       <div class="form-group">
-                        <label for="cardCVC">Mã CVC</label> <input id="cardCVC"
-                          type="tel" class="form-control" name="cvc" style="margin-top:0" minlength="3" maxlength="10"/>
+                        <label for="cardCVC">Mã CVV/CVC</label> <input id="cardCVC"
+                          type="tel" class="form-control" name="cvc" style="margin-top:0" minlength="3" maxlength="10" pattern="[0-9]+" title="Vui lòng chỉ nhập số"/>
                       </div>
                     </div>
                   </div>  
@@ -213,16 +213,16 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <span>Tổng tiền đơn hàng</span>
-                <span> <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
+                <span> <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'POINT', 0, 'POINT')}"> </span> VNĐ</span>
               </div>
               <div class="d-flex justify-content-between">
                 <span>Phí vận chuyển</span>
-                <span>0</span>
+                <span>0 VNĐ</span>
               </div>
               <hr>
               <div class="d-flex justify-content-between">
                 <span>Tổng cộng</span>
-                <span class="font-weight-bold text-warning"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
+                <span class="font-weight-bold text-warning"><span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'POINT', 0, 'POINT')}"> </span> VNĐ</span>
               </div>
             </div>
             <div class="card-footer bg-white border-top-0">
