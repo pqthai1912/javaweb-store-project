@@ -49,18 +49,18 @@
                 <a th:href="@{/product-detail?id=}+${cartItem.product.id}"><img class="img-fluid" th:src="'/image/product/pictures/'+${cartItem.product.picture}+'.jpg'" alt="${cartItem.product.title}"></a>
               </div>
               <div class="col-8">
-                <a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h6 bold d-inline-block" th:text=${cartItem.product.title}></a>
+                <a th:href="@{/product-detail?id=}+${cartItem.product.id}" class="h5 bold d-inline-block text-info" th:text=${cartItem.product.title}></a>
                   <br>
                   <div><small><b>Kích thước bề mặt</b>: <span th:text="${cartItem.size}"></span></small></div>                  
-                  <small><b>Đơn giá</b>:<span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></small>
+                  <small><b>Đơn giá</b>: <span th:text="${#numbers.formatDecimal(cartItem.product.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></small>
               </div>
               
             </div>
           </div>  
               
           <div class="col-12 col-md-6 text-right">
-            <span>x<span th:text="${cartItem.qty}"></span> Đơn vị: </span>                           
-            <span class="font-weight-bold text-info"> <span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></span>
+            <span>x<span th:text="${cartItem.qty}"></span> = </span>                           
+            <span class="font-weight-bold text-danger"> <span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></span>
           </div>  
               
             
@@ -68,8 +68,8 @@
        </div>  
        <div class="d-flex justify-content-center align-items-center mt-3">
          <div class="text-center">           
-           <small class="counter">TỔNG CỘNG</small>
-           <h3 class="font-weight-bold"> <span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></h3>
+           <small class="counter"><b>TỔNG CỘNG</b></small>
+           <h3 class="font-weight-bold text-warning"> <span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></h3>
           </div>         
        </div>
        </div>
