@@ -54,7 +54,7 @@ public class UserAdminController {
 			//Cần anh check thằng này nhỉ
 	//	anh giup em vs a
 			
-			System.out.print(userService.findAll()); // Tự sửa cho quen. Anh còn nhiều việc quá. Log chỗ này có data là được
+//			System.out.print(userService.findAll()); // Tự sửa cho quen. Anh còn nhiều việc quá. Log chỗ này có data là được
 			
 			model.addAttribute("USERS",userService.findAll());//này là sẽ chạy được thôi
 			

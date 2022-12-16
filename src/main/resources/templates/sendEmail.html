@@ -8,26 +8,26 @@
 	<div class="container" style="margin-top: 10px;">
 		<div class="row"
 			style="width: 50%; margin: 0 auto; padding: 20px;">
-			<div class="col-sm-12">
-				<form action="sendEmail" method="post">
+			<div class="col-sm-12 p-2" style="background-color: white; border-radius: 10px">
+				<form th:action="@{/sendEmail}" method="post">
 					<div class="form-group">
-						<label>To:</label> 
+						<label>Gửi đến:</label> 
 						<input type="text" required="required"
-						class="form-control" name="to" placeholder="Enter Email">
+						class="form-control" name="to" placeholder="Enter Email" th:value="${user.email}">
 					</div>
 					<p class="text-danger" th:text=${invalidEmail} th:if=${invalidEmail}></p>
 					<div class="form-group">
-						<label>Subject:</label> 
+						<label>Lý do:</label> 
 						<input type="text" required="required"
-						class="form-control" name="subject" placeholder="Enter Subject">
+						class="form-control" name="subject" placeholder="Lý do">
 					</div>
 					<p class="text-danger" th:text=${emptySubject} th:if=${emptySubject}></p>
 					<div class="form-group">
-						<label for="content">Content:</label>
-						<textarea class="form-control" rows="3"  name="content"></textarea>
+						<label for="content">Nội dung:</label>
+						<textarea class="form-control" rows="3" placeholder="Nội dung"  name="content"></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">Send</button>
-					<button type="reset" class="btn btn-primary">Cancel</button>
+					<button type="reset" class="btn btn-primary">Reset</button>
 				</form>
 			</div>
 		</div>
