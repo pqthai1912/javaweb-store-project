@@ -8,7 +8,7 @@
   <div class="container page-content bg-white pt-3">  
     <div class="row">
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center text-left-lg">
-        <h5 class="font-weight-bold">Order details</h5>
+        <h5 class="font-weight-bold">Chi tiết đơn hàng</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
           <div><strong>Ngày đặt hàng: </strong><span th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></span></div>
           <div><strong>Ngày giao hàng: </strong><span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></div>
@@ -17,7 +17,7 @@
         <hr class="d-block d-sm-none">
       </div>
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center">
-        <h5 class="font-weight-bold">Shipping</h5>
+        <h5 class="font-weight-bold">Giao hàng</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
           <div><strong>Người nhận: </strong><span th:text="${order.shipping.receiver}"></span></div>
           <div><strong>Địa chỉ: </strong><span th:text="${order.shipping.address.streetAddress}"></span></div>
@@ -28,11 +28,11 @@
         <hr class="d-block d-sm-none">        
       </div>
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center">
-        <h5 class="font-weight-bold">Payment</h5>
+        <h5 class="font-weight-bold">Thanh Toán</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
-          <div><strong>Credit card: </strong><span th:text="${order.payment.type}"></span></div>    
-          <div><strong>Card owner: </strong><span th:text="${order.payment.holderName}"></span></div>
-          <div><strong>Card number: </strong><span th:text="${order.payment.cardNumber}"></span></div>
+          <div><strong>Thẻ tín dụng: </strong><span th:text="${order.payment.type}"></span></div>    
+          <div><strong>Chủ thẻ: </strong><span th:text="${order.payment.holderName}"></span></div>
+          <div><strong>Mã số thẻ: </strong><span th:text="${order.payment.cardNumber}"></span></div>
         </div>
       </div>
     </div>
@@ -69,7 +69,7 @@
        <div class="d-flex justify-content-center align-items-center mt-3">
          <div class="text-center">           
            <small class="counter">TỔNG CỘNG</small>
-           <h3 class="font-weight-bold"> <span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'POINT', 0, 'POINT')} + ' 	VNĐ'"></span></h3>
+           <h3 class="font-weight-bold"> <span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></h3>
           </div>         
        </div>
        </div>
