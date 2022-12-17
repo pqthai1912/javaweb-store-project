@@ -19,7 +19,7 @@
           </p>
           <p>
             <span class="text-muted">Tổng hóa đơn: </span>
-            <span class="text-info"><span th:text="${order.orderTotal}"></span>VNĐ</span>
+            <span class="text-info"><span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></span>
           </p>
           <p>Thời gian giao hàng ước tính là <span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></p>
           <a th:href="@{/store}" class="btn btn-info rounded mb-3">TIẾP TỤC MUA SẮM</a>

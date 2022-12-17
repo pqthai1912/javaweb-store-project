@@ -21,8 +21,8 @@
                 </thead>
                 <tbody>
                     <tr th:each="item: ${USERS}" th:if="${item.username} != 'admin' ">
-                    	<td th:text="${item.id}"></td>
-                        <td><a th:href="@{/user/user-detail/?id=}+${item.id}" class="text-primary"><span th:text="${item.username}"></span></a></td>
+                    	 <td th:text="${item.id - 1}"></td>
+                        <td th:text="${item.username}"></td>
                         <td th:text="${item.firstName}"></td>
                         <td th:text="${item.lastName}"></td>
                          <td th:text="${item.email}"></td>

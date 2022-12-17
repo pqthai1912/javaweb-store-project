@@ -73,7 +73,7 @@
                     </div> 
                     <div class="form-group col-12">
                       <label for="phone">Số điện thoại</label> 
-                      <input type="number" class="form-control" id="phone" name="phone" required="required" />
+                      <input type="number" class="form-control" id="phone" name="phone" required="required" maxlength="10"/>
                     </div>
                     <div class="form-group col-12">
                       <label for="streetAddress">Địa chỉ (Số nhà/ tên đường)</label> 
@@ -123,7 +123,7 @@
                     <div class="col-12">
                       <img src="/image/creditcard.png" class="img-fluid mb-2" style="width: 250px; height: 30px;"/><br />
                       <div class="form-group">
-                        <label for="cardType">Chọn loại Card: </label> <select
+                        <label for="cardType">Chọn loại thẻ: </label> <select
                           class="form-control" id="cardType" name="type">
                           <option value="visa">Visa</option>
                           <option value="mastercard">Mastercard</option>
@@ -133,15 +133,15 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="cardHolder">Card Name:</label> <input
+                        <label for="cardHolder">Chủ thẻ:</label> <input
                           type="text" class="form-control" id="cardHolder"
                           required="required" th:name="holderName">
                       </div>
                       <div class="form-group">
-                        <label for="cardNumber">Card Number:</label>
+                        <label for="cardNumber">Mã số thẻ:</label>
                         <div class="input-group">
-                          <input type="tel" class="form-control" id="cardNumber"
-                            required="required" th:name="cardNumber">
+                          <input type="number" class="form-control" id="cardNumber"
+                            required="required" th:name="cardNumber" minlength="12" maxlength="19">
                         </div>
                       </div>
                     </div>
@@ -150,29 +150,29 @@
                   <div class="row">
                     <div class="col-7">
                       <div class="form-group">
-                        <label>Expiration Date</label>
+                        <label>Ngày hết hạn</label>
                         <div class="row">
                           <div class="col-6">
                             <select class="form-control" name="expiryMonth"
                               required="required">
-                              <option disabled="disabled">-- Month --</option>
-                              <option value="1">Jan (01)</option>
-                              <option value="2">Feb (02)</option>
-                              <option value="3">Mar (03)</option>
-                              <option value="4">Apr (04)</option>
-                              <option value="5">May (05)</option>
-                              <option value="6">June (06)</option>
-                              <option value="7">July (07)</option>
-                              <option value="8">Aug (08)</option>
-                              <option value="9">Sep (09)</option>
-                              <option value="10">Oct (10)</option>
-                              <option value="11">Nov (11)</option>
-                              <option value="12">Dec (12)</option>
+                              <option disabled="disabled">-- Tháng --</option>
+                              <option value="1">Tháng Một (1)</option>
+                              <option value="2">Tháng Hai (2)</option>
+                              <option value="3">Tháng Ba (3)</option>
+                              <option value="4">Tháng Tư (4)</option>
+                              <option value="5">Tháng Năm (5)</option>
+                              <option value="6">Tháng Sáu (6)</option>
+                              <option value="7">Tháng Bảy (7)</option>
+                              <option value="8">Tháng Tám (8)</option>
+                              <option value="9">Tháng Chín (9)</option>
+                              <option value="10">Tháng Mười (10)</option>
+                              <option value="11">Tháng Mười Một (11)</option>
+                              <option value="12">Tháng Mười Hai (12)</option>
                             </select>
                           </div>
                           <div class="col-6">
                             <select class="form-control" name="expiryYear">
-                              <option disabled="disabled">-- Year --</option>
+                              <option disabled="disabled">-- Năm --</option>
                               <option value="2020">2020</option>
                               <option value="2021">2021</option>
                               <option value="2022">2022</option>
@@ -190,14 +190,14 @@
                     </div>
                     <div class="col-5">
                       <div class="form-group">
-                        <label for="cardCVC">CV Code</label> <input id="cardCVC"
-                          type="tel" class="form-control" name="cvc" style="margin-top:0"/>
+                        <label for="cardCVC">Mã CVC</label> <input id="cardCVC"
+                          type="tel" class="form-control" name="cvc" style="margin-top:0" minlength="3" maxlength="10"/>
                       </div>
                     </div>
                   </div>  
                   <div class="mt-2 text-right">
                     <a data-toggle="collapse" data-parent="#accordion"
-                      class="btn btn-primary rounded-pill" href="#collapseThree">Next <i data-feather="arrow-right"></i></a>
+                      class="btn btn-primary rounded-pill" href="#collapseThree">Tiếp theo <i data-feather="arrow-right"></i></a>
                   </div>                
                 </div>                
               </div>

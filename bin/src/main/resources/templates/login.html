@@ -18,7 +18,7 @@
 							<div class="col-md-6 col-login">
 								<form th:action="@{/login}" method="post">
 									<div class="form-group text-center mb-2">
-										<h2 class="mb-0 text-success"><b>Đăng nhập</b></h2>
+										<h2 class="mb-3 text-success"><b>Đăng nhập</b></h2>
 									</div>
 									<div class="form-group">
 										<div class="input-icon">
@@ -28,23 +28,18 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="input-icon">
-											<i data-feather="lock"></i> <input required="required"
+										<div class="input-icon input-field">
+											<i data-feather="lock"></i>
+											<input required="required"
 												type="password" class="form-control input-lg" placeholder="Password"
 												name="password" th:classappend="${param.error} ? is-invalid">
-											<div class="invalid-feedback">Incorrect username or
-												password</div>
+											<div class="invalid-feedback">Sai username hoặc
+												mật khẩu</div>
 										</div>
 									</div>
 									<div class="form-group d-flex justify-content-between">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input"
-												id="loginRemember" name="remember-me"> <label
-												class="custom-control-label" for="loginRemember">Ghi
-												nhớ đăng nhập</label>
-										</div>
-										<a href="#" class="text-warning small reset">Forgot
-											password ?</a>
+										<a class="text-warning small reset align-right"></a>
+										<a class="text-warning small reset">Liên hệ hỗ trợ tại Hotline: 0937435006</a>
 									</div>
 									<button type="submit" class="btn btn-success btn-block">LOGIN</button>
 								</form>
@@ -65,7 +60,7 @@
 												type="email" class="form-control"
 												th:classappend="${emailExists} ? is-invalid" name="email"
 												placeholder="Email address" th:value="${email}">
-											<div class="invalid-feedback">Email is already in use</div>
+											<div class="invalid-feedback">Email đã được sử dụng</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -75,8 +70,7 @@
 												th:classappend="${usernameExists} ? is-invalid"
 												placeholder="Username" name="username"
 												th:value="${username}">
-											<div class="invalid-feedback">Username is already in
-												use</div>
+											<div class="invalid-feedback">Username đã được sử dụng</div>
 
 										</div>
 									</div>

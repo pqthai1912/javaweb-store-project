@@ -25,7 +25,7 @@
                     <tr th:each="order : ${orders}">
                       <th scope="row" ><a th:href="@{/product/order-list/order-detail?order=}+${order.id}" class="text-primary">ORD<span th:text="${order.id}"></span></a></th>                      
                       <td th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></td>
-                      <td class="text-right"><span th:text="${order.orderTotal}"></span> VNĐ</td>
+                      <td class="text-right"><span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span></td>
                       <td class="text-right" style="float: center;">
 						  <span th:if="${order.orderStatus == 'Đang xử lý'}">
 							

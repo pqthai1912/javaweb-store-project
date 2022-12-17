@@ -2,6 +2,8 @@ package com.springboot.store.controllers;
 
 import java.util.Properties;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,10 +11,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.springboot.store.models.User;
 import com.springboot.store.services.UserService;
 
 @Controller
@@ -24,16 +28,18 @@ public class SendMailController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/sendEmail")
-	public String ShowForm(Model model) {
-		model.addAttribute("invalidEmail", model.asMap().get("invalidEmail"));
-		model.addAttribute("emptySubject", model.asMap().get("emptySubject"));
+	@GetMapping("/sendEmail/{id}")
+	public String ShowForm(@PathVariable("id") Long id, Model model) {
+		
+		User user = userService.findById(id);
+		
+		model.addAttribute("user", user);
 		return "sendEmail";
 	}
 	
 	@PostMapping("/sendEmail")
 	public String sendMail(@RequestParam("to")String to, @RequestParam("subject")String subject,
-			@RequestParam("content")String content, RedirectAttributes redirectAttributes) {
+			@RequestParam("content")String content, RedirectAttributes redirectAttributes, Model model) {
 		try {
 			boolean invalidFields = false;
 			if(userService.findByEmail(to) == null) {
@@ -66,8 +72,10 @@ public class SendMailController {
 			msg.setSubject(subject);
 			msg.setText(content);
 			mailSender.send(msg);
-
-			return "redirect:/sendEmail";
+			
+			model.addAttribute("USERS",userService.findAll());
+			
+			return "redirect:/list";
 			
 		} catch (Exception e) {
 			return "sendMail";

@@ -8,10 +8,10 @@
   
   <div class="container page-content mt-3 mb-3">  
     <div th:if="${addProductSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Added item to the shopping cart!</strong>
+      <strong>Đã thêm đồng hồ vào giỏ</strong>
       <div class="d-flex mt-2">
-        <a th:href="@{/store}" class="btn btn-info rounded-pill mx-2"><i data-feather="arrow-left"></i> Continue shopping</a>            
-        <a th:href="@{/shopping-cart/cart}" class="btn btn-primary rounded-pill mx-2">Go to shopping cart <i data-feather="arrow-right"></i></a>
+        <a th:href="@{/store}" class="btn btn-info rounded-pill mx-2"><i data-feather="arrow-left"></i> Tiếp tục mua sắm</a>            
+        <a th:href="@{/shopping-cart/cart}" class="btn btn-primary rounded-pill mx-2">Đi đến giỏ hàng <i data-feather="arrow-right"></i></a>
       </div>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -33,12 +33,10 @@
             <h2 class="card-title" th:text="${product.title}" style="margin-bottom: 20px;"></h2>
             <div class="d-flex align-items-center"  style="margin-bottom: 10px;">
               <h2 class="price font-weight-bold mr-3">
-                <span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
+                <span th:text="${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span>
               </h2>              
-              <h6>(<span th:text="${product.stock}"></span> sản phẩm)</h6>
+              <h6>(Còn <span th:text="${product.stock}"></span> sản phẩm)</h6>
             </div>            
-            <!-- <p class="d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptatibus quos ea dolore rem, molestias laudantium et explicabo assumenda fugiat deserunt in, facilis laborum excepturi aliquid nobis ipsam deleniti aut? Aliquid sit hic id velit qui fuga nemo suscipit obcaecati. Officia nisi quaerat minus nulla saepe aperiam sint possimus magni veniam provident.</p>
-             -->
              <form th:action="@{/shopping-cart/add-item}" method="post">
               <input hidden="hidden" th:field="*{product.id}">  
               <div class="form-row"  style="margin-bottom: 10px;">
@@ -61,10 +59,10 @@
               
             </form>
             <hr>
-            <div class="pt-1 mb-2"><span class="text-medium">Brand:&nbsp;</span><a href="#" th:each="brand : ${product.brands}" th:value="${brand.getName()}" th:text="${brand.getName()} + ' '"></a></div>
+            <div class="pt-1 mb-2"><span class="text-medium">Thương hiệu:&nbsp;</span><b><a th:each="brand : ${product.brands}" th:value="${brand.getName()}" th:text="${brand.getName()} + ' '"></a></b></div>
             <div class="padding-bottom-1x mb-2">
-            	<span class="text-medium">Categories:&nbsp;</span>
-            	<a class="navi-link" href="#" th:each="category : ${product.categories}" th:value="${category.getName()}" th:text="${category.getName()} + ' '"></a>
+            	<span class="text-medium">Thể loại:&nbsp;</span>
+            	<b><a class="navi-link" th:each="category : ${product.categories}" th:value="${category.getName()}" th:text="${category.getName()} + ' '"></a></b>
            	</div>
           </div>
         </div>
@@ -77,131 +75,17 @@
           <section class="product_description_area">
           
 				<div class="container">
-						<div class="section-intro pb-60px" style="margin-bottom: 50px;">
-			        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
-			      		</div>
-						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item">
-								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-								 aria-selected="false">Thông số</a>
-							</li>
-							<!--  <li class="nav-item">
-								<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-								 aria-selected="false">Reviews</a>
-							</li>-->
-						</ul>
-						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-								<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-									and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-									Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to</p>
-								<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-									more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-									the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-									more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-									streamlined plan of cooking that is more efficient for one person creating less</p>
-									
-								
-							</div>
-							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-								<div class="row">
-									<div></div>
-									<p>Bảng thông số sản phẩm đồng hồ. Lưu ý thông số chỉ mang tính chất tham khảo và có thể thay đổi theo thời gian. Chân thành cảm ơn quý khách! </p>
-									<div class="table-responsive" style="width: 200%;">
-										<table class="table">
-											<tbody>
-												<tr>
-													<td class="text-center">
-														<h5>Width</h5>
-													</td>
-													<td class="text-center">
-														<h5>128mm</h5>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-center">
-														<h5>Height</h5>
-													</td>
-													<td class="text-center">
-														<h5>508mm</h5>
-													</td>
-												</tr>
-												
-											</tbody>
-										</table>
-								    </div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-								<div class="row">
-									<div class="col-lg-6">
-										
-										<div class="review_list">
-											<div class="review_item">
-												<div class="media">
-													<div class="d-flex">
-														<img src="image/product/pictures/apple-watch.jpg" alt="" style="width: 70px; height: 70px;">
-													</div>
-													<div class="media-body">
-														<h4>Blake Ruiz</h4>
-													</div>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-													commodo</p>
-											</div>
-											<div class="review_item">
-												<div class="media">
-													<div class="d-flex">
-														<img src="image/product/pictures/review-1.png" alt="" style="width: 70px; height: 70px;">
-													</div>
-													<div class="media-body">
-														<h4>Blake Ruiz</h4>
-													</div>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-													dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-													commodo</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="review_box">
-											<h4>Add a Review</h4>
-							                <form action="#/" class="form-contact form-review mt-3">
-							                  <div class="form-group">
-							                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
-							                  </div>
-							                  <div class="form-group">
-							                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
-							                  </div>
-							                  <div class="form-group">
-							                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
-							                  </div>
-							                  <div class="form-group">
-							                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
-							                  </div>
-							                  <div class="form-group text-center text-md-right mt-3">
-							                    <button type="submit" class="button button--active button-review">Submit Now</button>
-							                  </div>
-							                </form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div class="section-intro pb-60px" style="margin-bottom: 50px;">
+		        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
+		        		
+		      		</div>
+		      		<p th:text="${product.description}"></p>
+				</div>
 		</section>
-		<!--================End Product Description Area =================-->
-
-	
+		<!-- ================End Product Description Area =================-->
         </div>
       </div>    
     </div>
-    
     
     <div class="card" style="margin-top: 15px;">
       <div class="card-body">
@@ -211,112 +95,29 @@
 				<div class="section-intro pb-50px">
 	        		<h2>Sản phẩm <span class="section-intro__style">liên quan</span></h2>
 	      		</div>
-			<div class="row mt-30">
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-			            <div class="single-search-product d-flex">
-			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-			              <div class="desc">
-			                  <a href="#" class="title">Gray Coffee Cup</a>
-			                  <div class="price">$170.00</div>
-			              </div>
-			            </div>
-			            <div class="single-search-product d-flex">
-			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-			              <div class="desc">
-			                <a href="#" class="title">Gray Coffee Cup</a>
-			                <div class="price">$170.00</div>
-			              </div>
-			            </div>
-			            <div class="single-search-product d-flex">
-			              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-			              <div class="desc">
-			                <a href="#" class="title">Gray Coffee Cup</a>
-			                <div class="price">$170.00</div>
-			              </div>
-			            </div>
-		          </div>
-		        </div>
-	
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                  <a href="#" class="title">Gray Coffee Cup</a>
-		                  <div class="price">$170.00</div>
+		      	
+		      	<!-- Shop Grid -->          
+		          <div class="grid grid-gap-3 grid-col-2 grid-col-lg-4 mb-4">
+		              <div class="card card-product" th:each="prod,iter: ${productsByCategory}">
+		                <div class="card-body" th:if="${iter.index < 6}">
+		                	<div class="product">
+			                	<div class="product-img">
+									<a th:href="@{../product-detail?id=}+${prod.id}"><img class="card-img-top" th:src="${prod.picture} ? '/image/product/pictures/'+${prod.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>
+									<div class="product-label">
+										<span class="sale">-30%</span>
+										<span class="new">NEW</span>
+									</div>
+								</div>
+							</div>
+		                  <a th:href="@{../product-detail?id=}+${prod.id}" class="card-title" th:text="${prod.title}" style="text-decoration: none;" ></a>
+		                  <hr class="colorhr">
+		                  <div class="price">
+		                  <span class="h5" th:text="${#numbers.formatDecimal(prod.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"> </span>
+		               	 </div>
+		                </div>              
 		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                  <a href="#" class="title">Gray Coffee Cup</a>
-		                  <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	
-		        <div class="col-sm-6 col-xl-3 mb-4 mb-xl-0">
-		          <div class="single-search-product-wrapper">
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                  <a href="#" class="title">Gray Coffee Cup</a>
-		                  <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		            <div class="single-search-product d-flex">
-		              <a href="#"><img src="image/product/pictures/apple-watch.jpg" alt=""></a>
-		              <div class="desc">
-		                <a href="#" class="title">Gray Coffee Cup</a>
-		                <div class="price">$170.00</div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	      </div>
-		</div>
+		          </div> 
+			</div>
 		</section>
 	
       </div>
