@@ -1,7 +1,7 @@
 # javaweb-store-project
 - Một trang web bán những chiếc đồng hồ
 - Bao gồm 2 actor chính: admin, client
-- Công nghệ sử dụng: Spring Boot framework (làm tương tự theo mẫu chỉ đổi 1 xíu cho tương thích với đề tài của mình)
+- Công nghệ sử dụng: Spring Boot framework
 - Nhiệm vụ:
   + Nhóm Quân, Phong: làm những chức năng liên quan *admin*
   + Nhóm Duy, Thái: làm những chức năng liên quan *client* (bao gồm login)

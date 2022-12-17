@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/headerAdmin :: common-header" />
+
+
+<body class="d-flex flex-column">
+  <div th:replace="common/headerAdmin :: navbar"> </div>
+  
+  <div class="container page-content mt-3 mb-3">  
+    <div th:if="${addProductSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Added item to the shopping cart!</strong>
+      <div class="d-flex mt-2">
+        <a th:href="@{/store}" class="btn btn-info rounded-pill mx-2"><i data-feather="arrow-left"></i> Continue shopping</a>            
+        <a th:href="@{/shopping-cart/cart}" class="btn btn-primary rounded-pill mx-2">Go to shopping cart <i data-feather="arrow-right"></i></a>
+      </div>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div th:if="${notEnoughStock}" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Không thể thêm vào giỏ hàng, chỉ còn <span th:text="${product.stock}"></span> sản phẩm.</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>  
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img class="img-fluid" th:src="'/image/product/pictures/'+${product.picture}+'.jpg'">
+          </div>
+          <div class="col-md-6 mt-4 mt-md-0" style="padding: 10px;">          
+            <h2 class="card-title" th:text="${product.title}" style="margin-bottom: 20px;"></h2>
+            <div class="d-flex align-items-center"  style="margin-bottom: 10px;">
+              <h2 class="price font-weight-bold mr-3">
+                <span th:text="${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"></span>
+              </h2>              
+              <h6>(<span th:text="${product.stock}"></span> sản phẩm)</h6>
+            </div>            
+            <!-- <p class="d-none d-lg-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptatibus quos ea dolore rem, molestias laudantium et explicabo assumenda fugiat deserunt in, facilis laborum excepturi aliquid nobis ipsam deleniti aut? Aliquid sit hic id velit qui fuga nemo suscipit obcaecati. Officia nisi quaerat minus nulla saepe aperiam sint possimus magni veniam provident.</p>
+             -->
+             
+            <div class="pt-1 mb-2"><span class="text-medium">Brand:&nbsp;</span><a  th:each="brand : ${product.brands}" th:value="${brand.getName()}" th:text="${brand.getName()} + ' '"></a></div>
+            <div class="padding-bottom-1x mb-2">
+            	<span class="text-medium">Categories:&nbsp;</span>
+            	<a class="navi-link" th:each="category : ${product.categories}" th:value="${category.getName()}" th:text="${category.getName()} + ' '"></a>
+           	</div>
+           	
+           	<a th:href="@{/product/edit-product?id=}+${product.id}" class="btn btn-primary text-light rounded-pill atc-demo" >Chỉnh sửa thông tin sản phẩm</a>
+			<a th:href="@{/product/delete-product?id=}+${product.id}" class="btn btn-danger text-light rounded-pill atc-demo" >Xóa sản phẩm</a>
+          </div>
+        </div>
+      </div>    
+    </div>
+    
+    
+     
+    <div class="card" style="margin-top: 15px; margin-bottom: 15px">
+      <div class="card-body">
+        <div class="row">
+          <section class="product_description_area">
+          
+				<div class="container">
+					<div class="section-intro pb-60px" style="margin-bottom: 50px;">
+		        		<h2>Thông tin <span class="section-intro__style">sản phẩm</span></h2>
+		        		
+		      		</div>
+		      		<p th:text="${product.description}"></p>
+				</div>
+		</section>
+		<!-- ================End Product Description Area =================-->
+        </div>
+      </div>    
+    </div>
+    
+    
+
+
+  <div th:replace="common/headerDetailProduct :: footer"> </div> 
+  <div th:replace="common/headerDetailProduct :: body-scripts"> </div>
+</body>
+</html>

@@ -150,7 +150,7 @@
                   <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}" style="text-decoration: none;" ></a>
                   <hr class="colorhr">
                   <div class="price">
-                  <span class="h5" th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"> </span>
+                  <span class="h5" th:text="${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'POINT')} + ' VNĐ'"> </span>
                   <!--<del class="product-old-price">$990.00</del>-->
                	 </div>
                 </div>              

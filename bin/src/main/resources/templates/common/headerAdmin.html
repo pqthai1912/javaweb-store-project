@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   
-  <title>eCommerce</title>
+  <title>Watch Store</title>
   <link rel="icon" href="/image/icon-logo.png">  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet">
@@ -42,27 +42,24 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto font-weight-bold">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/}">Home</a>
+            <a class="nav-link" th:href="@{/dashboard}">Home</a>
           </li>
           <!--<li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/}">Back to Home</a>
           </li>-->
            <li class="nav-item">
-            	<a class="nav-link" th:href="@{/order-list}">Danh sách đặt hàng</a>
+            	<a class="nav-link" th:href="@{/product/order-list}">Danh sách đặt hàng</a>
            </li>
-        <!--<li class="nav-item">         
-           
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/shopping-cart/cart}">Shopping Cart 
-           <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} !=  NULL ? ${shoppingCartItemNumber} : ''"></span>  
-           <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span> -->
-            </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/product-list}">Xem danh sách sản phẩm </a>
+            <a class="nav-link" th:href="@{/product/product-list}">Xem danh sách sản phẩm </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/add-product}"> Thêm sản phẩm mới </a>
+            <a class="nav-link" th:href="@{/product/add-product}"> Thêm sản phẩm mới </a>
           </li>      
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/list}"> Users </a>
+          </li>  
                                  
         </ul>
         <ul class="navbar-nav ml-auto font-weight-bold">          
@@ -70,9 +67,9 @@
             <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out </a>
           </li>
           
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/product/product-list}"> Admin Portal</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -85,12 +82,12 @@
       <div class="container mt-4">
         <div class="row">
           <div class="col-sm-6 col-lg-3 text-center pr-5">
-            <h5 class="font-weight-bold">SUBSCRIBE</h5>
+            <h5 class="font-weight-bold">LOGIN HERE</h5>
             <form action="/saveEmail" method="post">
-              <div class="form-group">
+              <!--<div class="form-group">
                 <input type="email" class="form-control rounded-pill text-center footer-input" placeholder="Enter your email">
-              </div>
-              <button type="submit" class="btn btn-success btn-block rounded-pill">SUBSCRIBE</button>
+              </div>-->
+              <button type="submit" class="btn btn-success btn-block rounded-pill">LOGIN</button>
             </form>
           </div>          
           <div class="col-6 col-lg-3 pl-3">

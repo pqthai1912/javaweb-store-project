@@ -62,7 +62,7 @@
                   <div class="form-group col-sm-6">
                     <label for="email">Email</label>
                     <input required="required" type="text" class="form-control" th:classappend="${emailExists} ? is-invalid"
-                                id="email" name="email" th:value="${user.email}">
+                                id="email" name="email" th:value="${user.email}" readonly>
                     <div class="invalid-feedback">Email đã được sử dụng bởi một tài khoản hiện có.</div>
                   </div>
                   <div class="form-group col-sm-6">

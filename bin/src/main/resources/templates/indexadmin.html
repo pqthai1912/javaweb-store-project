@@ -9,22 +9,105 @@
 
 	<!-- Nội dung trong này -->
 	<div class="jumbotron jumbotron-fluid mt-2 "
-		th:style="'background-image: url(/image/background/dongho_bg1.jpg);'">
+		th:style="'background-image: url(/image/Thumbnail.png);'">
 		<div class="container">
 			<div class="row text-center py-5 text-center">
 				<div
 					class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto"  style="margin:0;">
-					<h2 class=" text-white d-inline-block p-1">Thương hiệu mới</h2>
-					<h1 class="font-weight-bold text-primary ">Đồng hồ chất lượng cao</h1>
-					<a th:href="@{/sendEmail}" class="btn btn-primary rounded-pill"
-						data-addclass-on-xs="btn-sm">Gửi Thông Tin Đến Khách Hàng</a>
+					<h2 class=" text-white d-inline-block p-1 mb-3">Thương hiệu mới</h2>
+					<h1 class="font-weight-bold text-warning mb-5">Đồng hồ chất lượng cao</h1>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
+	<section class="section py-5 ">
+		<div class="container text-center">
+			<h4 class="font-weight-bold text-warning">Sản phẩm với tính năng nổi bật</h4>
+			<div class="featured-items mt-4">
+				<div class="card card-product card-featured"
+					th:each="product : ${products}">
+					<div class="card-body">
+						<a th:href="@{/product/product-detail?id=}+${product.id}"><img
+							class="card-img-top"
+							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
+							alt="Card image cap"></a> <a
+							th:href="@{/product/product-detail?id=}+${product.id}" class="card-title"
+							th:text="${product.title}"></a>
+						<div class="price">
+							<span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
 	<div class="jumbotron jumbotron-fluid mt-0"
-		th:style="'background-image: url(/image/background/adidas-background.jpg);'">
+		th:style="'background-image: url(/image/Helios-banner.gif);'">
+		<div class="container">
+			<div class="row text-center py-5">
+				<div
+					class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto"></div>
+			</div>
+		</div>
+	</div>
+	
+	<section class="section py-5 ">
+		<div class="container text-center">
+			<h4 class="font-weight-bold text-warning">Top sản phẩm bán chạy</h4>
+			<div class="featured-items mt-4">
+				<div class="card card-product card-featured"
+					th:each="product : ${products}">
+					<div class="card-body">
+						<a th:href="@{/product/product-detail?id=}+${product.id}"><img
+							class="card-img-top"
+							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
+							alt="Card image cap"></a> <a
+							th:href="@{/product/product-detail?id=}+${product.id}" class="card-title"
+							th:text="${product.title}"></a>
+						<div class="price">
+							<span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<div class="jumbotron jumbotron-fluid mt-0"
+		th:style="'background-image: url(/image/banner2.png);'">
+		<div class="container">
+			<div class="row text-center py-5">
+				<div
+					class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto"></div>
+			</div>
+		</div>
+	</div>
+	
+	<section class="section py-5 ">
+		<h4 class="font-weight-bold text-warning text-center">Gợi ý hôm nay</h4>
+		<div class="container text-center" >
+			<div class="featured-items mt-4" >
+				<div class="card card-product card-featured" th:each="product,iter: ${products}" th:if="${(iter.index % 2) == numberShowProducts}">
+					<div class="card-body" >
+						<a th:href="@{/product/product-detail?id=}+${product.id}"><img
+						   class="card-img-top"
+						   th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
+						   alt="Card image cap"></a> <a
+						   th:href="@{/product/product-detail?id=}+${product.id}" class="card-title"
+						   th:text="${product.title}"></a>
+						<div class="price">
+							<span th:text="${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)} + 'VNĐ'"></span>
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<div class="jumbotron jumbotron-fluid mt-0"
+		th:style="'background-image: url(/image/banner.jpg);'">
 		<div class="container">
 			<div class="row text-center py-5">
 				<div
@@ -33,74 +116,29 @@
 		</div>
 	</div>
 
-	
-	<section class="section py-5 ">
-		<div class="container text-center">
-			<h4 class="font-weight-bold ">Sản phẩm với tính năng nổi bật</h4>
-			<div class="featured-items mt-4">
-				<div class="card card-product card-featured"
-					th:each="product : ${products}">
-					<div class="card-body">
-						<a th:href="@{/product-detail?id=}+${product.id}"><img
-							class="card-img-top"
-							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
-							alt="Card image cap"></a> <a
-							th:href="@{/product-detail?id=}+${product.id}" class="card-title"
-							th:text="${product.title}"></a>
-						<div class="price">
-							<span th:text="'$'+${product.price}"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section py-5 ">
-		<div class="container text-center">
-			<h4 class="font-weight-bold ">Top sản phẩm bán chạy</h4>
-			<div class="featured-items mt-4">
-				<div class="card card-product card-featured"
-					th:each="product : ${products}">
-					<div class="card-body">
-						<a th:href="@{/product-detail?id=}+${product.id}"><img
-							class="card-img-top"
-							th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'"
-							alt="Card image cap"></a> <a
-							th:href="@{/product-detail?id=}+${product.id}" class="card-title"
-							th:text="${product.title}"></a>
-						<div class="price">
-							<span th:text="'$'+${product.price}"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
 	<!-- start section -->
-	<section class="section py-5 bg-white">
+	<section class="section py-5">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 mb-2">
 					<div class="text-center features-card">
 						<i data-feather="truck" class="text-info"></i>
-						<h5>Free Shipping</h5>
-						<p>Miễn phí giao hàng cho mọi đơn hàng.</p>
+						<h5 class="text-white">Free Shipping</h5>
+						<p class="text-white">Miễn phí giao hàng cho mọi đơn hàng.</p>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 mb-2">
 					<div class="text-center features-card">
 						<i data-feather="user" class="text-info"></i>
-						<h5>Support 24/7</h5>
-						<p>Nhân viên chúng tôi luôn nhiệt tình giúp đỡ các bạn.</p>
+						<h5 class="text-white">Support 24/7</h5>
+						<p class="text-white">Nhân viên chúng tôi luôn nhiệt tình giúp đỡ các bạn.</p>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 mb-2">
 					<div class="text-center features-card">
 						<i data-feather="gift" class="text-info"></i>
-						<h5>Gift cards</h5>
-						<p>Có cơ hội nhận được giải thưởng khi mua bất kỳ đơn hàng nào.</p>
+						<h5 class="text-white">Gift cards</h5>
+						<p class="text-white">Có cơ hội nhận được giải thưởng khi mua bất kỳ đơn hàng nào.</p>
 					</div>
 				</div>
 			</div>
@@ -109,7 +147,7 @@
 	</section>
 	<!-- end section -->
 
-	<section class="section pt-5">
+	<!-- <section class="section pt-5">
 		<div class="container text-center">
 			<h4 class="font-weight-bold">Popular brands</h4>
 			<div class="featured-brands mt-3">
@@ -123,7 +161,7 @@
 			</div>
 
 		</div>
-	</section>
+	</section>-->
 
 	<!-- /Nội dung trong này -->
 

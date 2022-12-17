@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   
-  <title>eCommerce</title>
+  <title>Watch Store</title>
   <link rel="icon" href="/image/icon-logo.png">  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet">
@@ -24,6 +24,7 @@
   <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" />      
   <!-- Custom styles -->
   <link href="/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Feather icons -->
   <script src="https://unpkg.com/feather-icons"></script>  
   
@@ -42,41 +43,42 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto font-weight-bold">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/}">Home</a>
+            <a class="nav-link" th:href="@{/}"><i class="fa-solid fa-store"></i> Home</a>
           </li>
           <!--<li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/}">Back to Home</a>
           </li>-->
            <li class="nav-item">
-            <a class="nav-link" th:href="@{/store}"> Products </a>
-        <li class="nav-item">         
-           
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/shopping-cart/cart}">Shopping Cart 
-          <!-- <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} !=  NULL ? ${shoppingCartItemNumber} : ''"></span>  --> 
-           <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>
-            </a>
-          </li> 
-          <li class="nav-item">
+            <a class="nav-link navbar-color" th:href="@{/store}"><i class="fa-solid fa-stopwatch"></i> Products </a>
+           </li>
+           <li class="nav-item">         
+	            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/shopping-cart/cart}"><i class="fa-solid fa-cart-flatbed"></i> Cart 
+	          <!-- <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} !=  NULL ? ${shoppingCartItemNumber} : ''"></span>  --> 
+	           <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>
+	            </a>
+	       </li>  
+          <!-- <li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/merchant}">Other Business </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" th:href="@{http://localhost:8888/}"> More Products </a>
           </li>
-          <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link"  th:href="@{/sendEmail}"> Admin </a>
-          </li>
+          </li> -->
                                  
         </ul>
-        <ul class="navbar-nav ml-auto font-weight-bold">          
+        <ul class="navbar-nav ml-auto font-weight-bold">
+	                
           <li class="nav-item">          
-            <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}">My Account </a>
+            <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fa-solid fa-user-astronaut"></i> My Account</a>
           </li>
           <li class="nav-item">           
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/my-profile}">My Account</a>
+            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/my-profile}"><i class="fa-solid fa-user-astronaut"></i> My Account</a>
           </li>
          
           <li class="nav-item">
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out </a>
+            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out </a>
           </li>
           
           <li class="nav-item">
@@ -94,39 +96,39 @@
       <div class="container mt-4">
         <div class="row">
           <div class="col-sm-6 col-lg-3 text-center pr-5">
-            <h5 class="font-weight-bold">SUBSCRIBE</h5>
+            <h5 class="font-weight-bold mb-3">LOGIN HERE</h5>
             <form action="/saveEmail" method="post">
-              <div class="form-group">
-                <input type="email" class="form-control rounded-pill text-center footer-input" placeholder="Enter your email">
-              </div>
-              <button type="submit" class="btn btn-success btn-block rounded-pill">SUBSCRIBE</button>
+              
+              <button type="submit" class="btn btn-success btn-block rounded-pill">LOGIN</button>
             </form>
           </div>          
           <div class="col-6 col-lg-3 pl-3">
-            <h6 class="font-weight-bold">Customer Service</h6>
+            <h6 class="font-weight-bold">Dịch vụ cửa hàng</h6>
             <div class="list-group list-group-flush list-group-no-border list-group-sm">
-              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Help Center</a>
-              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Delivery</a>
-              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Payment Method</a>
-              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Shipping Method</a>
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Các sản phẩm</a>
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Giỏ hàng</a>
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Thanh toán</a>
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Trung tâm trợ giúp</a>
             </div>
           </div>
           <div class="col-6 col-lg-3 pl-3">
-            <h6 class="font-weight-bold">eCommerce</h6>
+            <h6 class="font-weight-bold">Watch Store</h6>
             <div class="list-group list-group-flush list-group-no-border list-group-sm">
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Project Java TDTU</a>
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Services</a>
               <a href="javascript:void(0)" class="list-group-item list-group-item-action">About Us</a>
               <a href="javascript:void(0)" class="list-group-item list-group-item-action">Terms and Conditions</a>
-              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Our Story</a>
-              <a href="javascript:void(0)" class="list-group-item list-group-item-action">Services</a>
+              
             </div>
           </div>  
           <div class="col-sm-6 col-lg-3 pl-3">
             <h6 class="font-weight-bold ">Contact us</h6>
             <div class="list-group list-group-flush list-group-no-border list-group-sm">
-              <span class="list-group-item"><strong>Phone:</strong> 01934776188</span>
-              <span class="list-group-item"><strong>Email:</strong> www.shafiquebd@gmail.com</span>              
-              <span class="list-group-item"><strong>Mon-Fri:</strong> 9.00 am - 8.00 pm</span>
-              <span class="list-group-item"><strong>Saturday:</strong> 10.00 am - 6.00 pm</span>         
+              <span class="list-group-item"><strong>MSSV1:</strong> 51900214</span>
+              <span class="list-group-item"><strong>MSSV2:</strong> 51900053</span>              
+              <span class="list-group-item"><strong>MSSV3:</strong> 51900068</span>
+              <span class="list-group-item"><strong>MSSV4:</strong> 51900545</span>    
+              <span class="list-group-item"><strong>MSSV5:</strong> 51900668</span>      
             </div>    
           </div>        
         </div>
