@@ -62,18 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/login")
 			.successHandler(loginSuccessHandler) // them dong nay xu ly redirect cho login thanh cong
 			.permitAll()
-//			.and().csrf().disable().cors().disable() 
-//			.formLogin().failureUrl("/result?error")
-//			.loginPage("/result").permitAll()
-//			.and().csrf().disable().cors().disable()
-//			.formLogin().failureUrl("/login2?error")
-//			.loginPage("/login2").permitAll()
-//			.and().csrf().disable().cors().disable()
-//			.formLogin().failureUrl("/sendEmail?error")
-//			.loginPage("/sendEmail").permitAll()
-//			.and().csrf().disable().cors().disable()
-//			.formLogin().failureUrl("/sendmail?error")
-//			.loginPage("/sendnail").permitAll() // cái này gây lỗi k check login dc
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()

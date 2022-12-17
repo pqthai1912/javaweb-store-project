@@ -124,26 +124,7 @@ public class ProductRepositoryTest {
 		assertThat(results).hasSize(2).extracting("title").contains("product1", "product2");
 		assertThat(results2).hasSize(1).extracting("title").contains("product3");
 	}
-//// test case lỗi	
-//	@Test
-//	public void should_filter_products_by_brand() {
-//		List<Product> results = repository.findAll(ProductSpecification.filterBy(null, null, null, null, Arrays.asList("Samsung"), null));
-//		List<Product> results2 = repository.findAll(ProductSpecification.filterBy(null, null, null, null, Arrays.asList("Apple", "notARealCategory"), null));
-//		assertThat(results).hasSize(2).extracting("title").contains("product1", "product2");
-////		assertThat(results2).hasSize(1).extracting("title").contains("product3");
-//	}
-	
-	// test case lỗi	
-//	@Test
-//	public void should_filter_products_by_search_term() {
-////		List<Product> results = repository.findAll(ProductSpecification.filterBy(null, null, null, null, null, "product"));
-//		List<Product> results2 = repository.findAll(ProductSpecification.filterBy(null, null, null, null, null, "cle4"));
-//		List<Product> results3 = repository.findAll(ProductSpecification.filterBy(null, null, null, null, null, "unmatchingterm"));
-////		assertThat(results).hasSize(5).extracting("title").contains("product1", "product2", "product3", "product4", "product5");
-//		assertThat(results2).hasSize(1).extracting("title").contains("product4");
-//		assertThat(results3).isEmpty();
-//	}
-//	
+//
 	@Test
 	public void should_find_all_if_all_filters_are_null() {
 		List<Product> results = repository.findAll(ProductSpecification.filterBy(null, null, null, null, null, null));
